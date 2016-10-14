@@ -5,9 +5,16 @@ package com.product.yuwei.net;
  */
 public class NetApi {
 
-    /**
-     * 购买零器件
-     */
+
+    public static final String SEREVER_HOST = "http://dkd01.trusper.net:8080/";
+
+
     public static final String BUY_COMPONENT_RESULT="short_componentList";
+
+
+
+
+
+
 
 }
