@@ -1,7 +1,9 @@
-package com.product.yuwei;
+package com.product.yuwei.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.product.yuwei.R;
 
 public class MainActivity extends AppCompatActivity {
 
