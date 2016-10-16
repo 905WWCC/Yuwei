@@ -12,20 +12,19 @@ import com.product.yuwei.bean.BaseFragment;
 /**
  * Created by teng on 10/14/16.
  */
-public class RecommendFragment extends BaseFragment {
+public class NoteFragment extends BaseFragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View ret = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_recommend,container,false);
+        View ret = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_note,container,false);
+
 
         return ret;
-
     }
-
     @Override
     public String getFragmentTitle() {
-        return "推荐";
+        return "美食游记";
     }
 }
