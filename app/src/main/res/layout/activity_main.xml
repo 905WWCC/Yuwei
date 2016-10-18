@@ -11,41 +11,62 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         />
-
-    <LinearLayout
+    <View
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="1px"
+        android:background="@drawable/boder"
+        />
+    <LinearLayout
+        android:background="#fefefe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
         <RadioButton
             android:id="@+id/recommend_button"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_marginTop="3dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
             android:button="@null"
-            android:drawableTop="@drawable/tab_recommend"
-            android:text="推荐"
-            />
+            android:textColor="@drawable/color_radiobutton"
+            android:drawableTop="@drawable/recommend_background"
+            android:text="推荐" />
         <RadioButton
             android:id="@+id/local_button"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:layout_marginTop="3dp"
             android:button="@null"
-            android:drawableTop="@drawable/local_white"
-            android:text="本地"
-            />
+            android:textColor="@drawable/color_radiobutton"
+            android:drawableTop="@drawable/native_background"
+            android:text="本地" />
         <RadioButton
             android:id="@+id/note_button"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="3dp"
+            android:gravity="center"
+            android:button="@null"
+            android:textColor="@drawable/color_radiobutton"
+            android:drawableTop="@drawable/visit_background"
+            android:text="美食游记"
+            />
+        <RadioButton
+            android:id="@+id/mine_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
             android:button="@null"
-            android:drawableTop="@drawable/bottom_note"
-            android:text="美食游记"
+            android:layout_marginTop="3dp"
+            android:textColor="@drawable/color_radiobutton"
+            android:drawableTop="@drawable/my_background"
+            android:text="我的"
             />
 
     </LinearLayout>
