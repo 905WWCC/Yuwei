@@ -32,7 +32,8 @@
             android:button="@null"
             android:textColor="@drawable/color_radiobutton"
             android:drawableTop="@drawable/recommend_background"
-            android:text="推荐" />
+            android:text="推荐"
+            />
         <RadioButton
             android:id="@+id/local_button"
             android:layout_width="0dp"
@@ -43,7 +44,8 @@
             android:button="@null"
             android:textColor="@drawable/color_radiobutton"
             android:drawableTop="@drawable/native_background"
-            android:text="本地" />
+            android:text="本地"
+            />
         <RadioButton
             android:id="@+id/note_button"
             android:layout_width="0dp"

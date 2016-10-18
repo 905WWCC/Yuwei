@@ -5,7 +5,8 @@ package com.product.yuwei.utils;
  */
 public class Contrants {
 
-    public static final String IS_FIRST = "isFirst";
+    //是否显示欢迎界面，ture表示显示，false表示不显示
+    public static final String SHOW_GUIDE = "showguide";
      //SharedPreferences
      //px
 }

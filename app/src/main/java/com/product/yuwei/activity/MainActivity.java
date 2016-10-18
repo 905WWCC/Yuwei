@@ -1,7 +1,5 @@
 package com.product.yuwei.activity;
 
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

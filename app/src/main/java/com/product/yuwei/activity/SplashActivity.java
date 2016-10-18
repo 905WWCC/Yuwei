@@ -31,7 +31,7 @@ public class SplashActivity extends Activity {
         //设置加载动画透明度渐变从(0.1不显示-1.0完全显示)
         AlphaAnimation logoAnimation = new AlphaAnimation(0.4f,1.0f);
         //设置动画时间 例如500 是5秒
-        logoAnimation.setDuration(500);
+        logoAnimation.setDuration(100);
         //组件和动画关联
         logo.setAnimation(logoAnimation);
 
@@ -46,7 +46,7 @@ public class SplashActivity extends Activity {
 
                 bi.setImageResource(R.drawable.start_bi);
                 AlphaAnimation biAnimation = new AlphaAnimation(0.4f,1.0f);
-                biAnimation.setDuration(500);
+                biAnimation.setDuration(100);
                 bi.setAnimation(biAnimation);
 
                 biAnimation.setAnimationListener(new Animation.AnimationListener() {
@@ -59,7 +59,7 @@ public class SplashActivity extends Activity {
 
                         lvtu.setImageResource(R.drawable.start_lvtu);
                         AlphaAnimation lvtuAnimation = new AlphaAnimation(0.1f,1.0f);
-                        lvtuAnimation.setDuration(900);
+                        lvtuAnimation.setDuration(100);
                         lvtu.setAnimation(lvtuAnimation);
 
                         lvtuAnimation.setAnimationListener(new Animation.AnimationListener() {
@@ -69,9 +69,9 @@ public class SplashActivity extends Activity {
 
                             @Override
                             public void onAnimationEnd(Animation animation) {
-                                Intent intent = new Intent(SplashActivity.this,MainActivity.class);
+                                Intent intent = new Intent(SplashActivity.this,GuideActivity.class);
                                 startActivity(intent);
-                                SplashActivity.this.finish();
+                                finish();
                             }
 
                             @Override
