@@ -37,6 +37,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         localButton = (RadioButton) findViewById(R.id.local_button);
         noteButton = (RadioButton) findViewById(R.id.note_button);
 
+
         //监听
         recommendButton.setOnClickListener(this);
         localButton.setOnClickListener(this);
@@ -89,6 +90,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         }
         fragmentTransaction.commit();
     }
+
+
 
 }
 
