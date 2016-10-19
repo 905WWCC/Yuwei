@@ -3,10 +3,11 @@ package com.product.yuwei.adapter;
 import android.app.Activity;
 import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.product.yuwei.R;
 import com.product.yuwei.activity.MainActivity;
 import com.product.yuwei.bean.PreferenceUtil;
 import com.product.yuwei.utils.Contrants;
@@ -20,12 +21,10 @@ public class GuidePagerAdapter extends PagerAdapter {
 
     private List<View> views;
     private Activity context;
-    private Button guideEnterButton;
 
-    public GuidePagerAdapter(List<View> views, Activity context, Button guideEnterButton) {
+    public GuidePagerAdapter(List<View> views, Activity context) {
         this.views = views;
         this.context = context;
-        this.guideEnterButton = guideEnterButton;
     }
 
     @Override
@@ -43,9 +42,11 @@ public class GuidePagerAdapter extends PagerAdapter {
         return super.getItemPosition(object);
     }
 
+
     @Override
-    public void destroyItem(View container, int position, Object object) {
-        ((ViewPager)container).removeView(views.get(position));
+    public void destroyItem(ViewGroup container, int position, Object object) {
+//        ((ViewPager)container).removeView(views.get(position));
+        container.removeView(views.get(position));
     }
 
 
@@ -53,15 +54,17 @@ public class GuidePagerAdapter extends PagerAdapter {
     *   实例化页卡，如果变成最后一页，则获取它的button并且添加点击事件
     * */
     @Override
-    public Object instantiateItem(View container, int position) {
-        ((ViewPager)container).addView(views.get(position),0);
+    public Object instantiateItem(ViewGroup container, int position) {
+        container.addView(views.get(position), 0);
 
         if (position == views.size() - 1) {
 
-            guideEnterButton.setOnClickListener(new View.OnClickListener() {
+            Button enterButton = (Button) container.findViewById(R.id.guide_enter);
+
+            enterButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    PreferenceUtil.setBoolean(context, Contrants.SHOW_GUIDE,true);
+                    PreferenceUtil.setBoolean(context, Contrants.SHOW_GUIDE, true);
                     Intent intent = new Intent(context,MainActivity.class);
                     context.startActivity(intent);
                     context.finish();
@@ -69,7 +72,6 @@ public class GuidePagerAdapter extends PagerAdapter {
             });
 
         }
-
-        return super.instantiateItem(container, position);
+        return views.get(position);
     }
 }
