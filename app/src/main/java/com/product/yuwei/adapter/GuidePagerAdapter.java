@@ -42,10 +42,8 @@ public class GuidePagerAdapter extends PagerAdapter {
         return super.getItemPosition(object);
     }
 
-
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-//        ((ViewPager)container).removeView(views.get(position));
         container.removeView(views.get(position));
     }
 

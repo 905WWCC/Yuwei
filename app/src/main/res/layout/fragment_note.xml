@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <android.support.design.widget.TabLayout
+        android:id="@+id/note_tablayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="美食游记"
-        android:gravity="center"
-        android:textSize="50sp"
+        android:layout_height="wrap_content"
+        android:background="#000"
+        app:tabTextAppearance="@style/TabLayoutTextStyle"
+        app:tabPaddingStart="30dp"
+        app:tabPaddingEnd="30dp"
+        app:tabSelectedTextColor="#FFA10D"
+        app:tabTextColor="#ffffff"
+        app:tabGravity="center"
+        app:tabIndicatorHeight="0dp"
+        />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/note_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         />
 
 </LinearLayout>

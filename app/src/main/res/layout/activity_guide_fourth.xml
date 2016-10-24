@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="@drawable/quanqiufanyi"
+    android:background="@mipmap/quanqiufanyi"
     >
 
     <Button
@@ -13,7 +13,7 @@
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal|bottom"
         android:layout_marginBottom="60dp"
-        android:background="@drawable/lijitiyan"
+        android:background="@mipmap/lijitiyan"
         />
 
 </FrameLayout>

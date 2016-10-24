@@ -8,7 +8,6 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -28,9 +27,11 @@ public class GuideActivity extends Activity {
     //是否显示引导界面
     boolean isShow = false;
 
+//    @ViewInject(R.id.guide_view_pager)
     private ViewPager guideViewPager;
+
+//    @ViewInject(R.id.cricle_layout)
     private LinearLayout cricleLayout;
-    private Button guideEnterButton;
 
     //页面的集合
     private List<View> views;
@@ -47,7 +48,10 @@ public class GuideActivity extends Activity {
         setContentView(R.layout.activity_guide);
         //得到Preference存储的数据
         isShow = PreferenceUtil.getBoolean(this, Contrants.SHOW_GUIDE);
+
+        // 调试使用
 //        isShow = false;
+
         if (isShow){
             //进入主页面
             Intent intent = new Intent(GuideActivity.this,MainActivity.class);
@@ -69,7 +73,7 @@ public class GuideActivity extends Activity {
         LayoutInflater inflater = LayoutInflater.from(this);
         views.add(inflater.inflate(R.layout.activity_guide_first,null));
         views.add(inflater.inflate(R.layout.activity_guide_second,null));
-//        views.add(inflater.inflate(R.layout.activity_guide_third,null));
+        views.add(inflater.inflate(R.layout.activity_guide_third,null));
         views.add(inflater.inflate(R.layout.activity_guide_fourth, null));
 
         guidePagerAdapter = new GuidePagerAdapter(views,this);
@@ -121,9 +125,7 @@ public class GuideActivity extends Activity {
                     cricleImageViews[position].setImageResource(R.mipmap.white_dot);
                 }
             }
-
         }
-
         @Override
         public void onPageScrollStateChanged(int state) {
 
