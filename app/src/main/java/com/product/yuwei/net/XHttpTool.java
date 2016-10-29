@@ -18,10 +18,10 @@ public final class XHttpTool {
     //////////////////////////////  GET 请求 ////////////////////////
     public static void getDataByGet(RequestParams params , final RequestListener requestListener){
 
-        x.http().get(params, new Callback.CommonCallback() {
+        x.http().get(params, new Callback.CommonCallback<String>() {
             @Override
-            public void onSuccess(Object result) {
-//                requestListener.onSuccess(result);
+            public void onSuccess(String result) {
+                requestListener.onSuccess(result);
             }
 
             @Override
@@ -77,7 +77,7 @@ public final class XHttpTool {
 
             @Override
             public void onFinished() {
-
+                requestListener.onFinished();
             }
         });
     }

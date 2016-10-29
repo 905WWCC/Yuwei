@@ -39,6 +39,11 @@ public class HotFragment extends BaseFragment {
                 //返回的东西，Json解析后说软件是盗版的
                 Log.e("data",result);
             }
+
+            @Override
+            public void onFinished() {
+
+            }
         });
 
 //        XHttpTool.getDataByGet(path, new RequestListener() {
