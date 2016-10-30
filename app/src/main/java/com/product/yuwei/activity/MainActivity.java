@@ -103,7 +103,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 noteButton.setCompoundDrawablesWithIntrinsicBounds(null, note_click, null, null);
                 noteButton.setTextColor(0xffFFA500);
                 if (noteFragment == null) {
-                    noteFragment = new NoteFragment();
+                    noteFragment = new NoteFragment(this);
                     fragmentTransaction.add(R.id.frame_layout,noteFragment);
                 } else {
                     fragmentTransaction.show(noteFragment);
@@ -114,7 +114,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 myButton.setCompoundDrawablesWithIntrinsicBounds(null, my_click, null, null);
                 myButton.setTextColor(0xffFFA500);
                 if (myFragment == null) {
-                    myFragment = new NoteFragment();
+                    myFragment = new NoteFragment(this);
                     fragmentTransaction.add(R.id.frame_layout,myFragment);
                 } else {
                     fragmentTransaction.show(myFragment);

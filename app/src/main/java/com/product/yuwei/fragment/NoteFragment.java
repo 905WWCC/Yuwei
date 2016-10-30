@@ -1,5 +1,6 @@
 package com.product.yuwei.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -21,6 +22,11 @@ import java.util.List;
  * Created by teng on 10/14/16.
  */
 public class NoteFragment extends BaseFragment {
+    private Context context;
+
+    public NoteFragment(Context context) {
+        this.context = context;
+    }
 
     @Nullable
     @Override
@@ -33,7 +39,7 @@ public class NoteFragment extends BaseFragment {
 
         List<BaseFragment> fragments = new ArrayList<BaseFragment>();
 
-        fragments.add(new HotFragment());
+        fragments.add(new HotFragment(context));
         fragments.add(new AttentionFragment());
 
         CommonFragmentPagerAdapter adapter = new CommonFragmentPagerAdapter(getChildFragmentManager(),fragments);

@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -27,7 +28,7 @@ public class GuideActivity extends Activity {
     //是否显示引导界面
     boolean isShow = false;
 
-//    @ViewInject(R.id.guide_view_pager)
+//    @ViewInject(R.id.guide_view_pager)      Translucent Bars
     private ViewPager guideViewPager;
 
 //    @ViewInject(R.id.cricle_layout)
@@ -45,7 +46,9 @@ public class GuideActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_guide);
+
         //得到Preference存储的数据
         isShow = PreferenceUtil.getBoolean(this, Contrants.SHOW_GUIDE);
 

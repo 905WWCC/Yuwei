@@ -16,9 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.GuideActivity">
+        <activity android:name=".activity.GuideActivity" >
         </activity>
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.MainActivity" >
         </activity>
     </application>
     <!-- 获取网络权限-->
