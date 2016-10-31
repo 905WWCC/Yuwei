@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="3dp"
+            android:background="@color/gray"
+            android:gravity="center_horizontal"
+
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:gravity="left|center"
+        android:id="@+id/id_ll_want"
+        android:layout_height="40dp"
+        android:weightSum="1">
+        <TextView
+            android:text="最近想去"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingLeft="15dp"
+            android:id="@+id/id_want"
+            android:textSize="15sp" />
+        <TextView
+            android:layout_width="3dp"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textColor="@color/gray"
+            android:layout_marginLeft="10dp"
+            android:text="|"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_search"
+            android:layout_marginLeft="10dp"
+            android:paddingLeft="6dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:paddingRight="6dp"
+            android:id="@+id/id_want_label"
+            android:text="胡志明市"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_search"
+            android:layout_marginLeft="10dp"
+            android:paddingLeft="6dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:paddingRight="6dp"
+            android:id="@+id/id_want_label1"
+            android:text="佛山"/>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/gray"
+            android:gravity="center_horizontal"
+
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="2dp"
+            android:src="@mipmap/miqilin_home"
+            android:id="@+id/imageView"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+</LinearLayout>

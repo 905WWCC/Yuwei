@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.product.yuwei.bean.homebean.HomeItem;
+import com.product.yuwei.fragment.RecommendFragment;
 
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class HomeAdapter extends BaseAdapter {
 
 
 
-    public HomeAdapter(Context context ,List<HomeItem> homeItemList){
+    public HomeAdapter(Context context , List<HomeItem> homeItemList){
         this.context=context;
         this.homeItemList=homeItemList;
     }

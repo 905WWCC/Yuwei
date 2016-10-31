@@ -31,28 +31,26 @@ public class RecommendFragment extends BaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        //HomeAdapter homeAdapter =new HomeAdapter(this,homeItemLIst);
-        //mainListView.setAdapter((ListAdapter) homeAdapter);
+
+        HomeAdapter homeAdapter =new HomeAdapter(getContext(),homeItemList);
+        mainListView.setAdapter((ListAdapter) homeAdapter);
         //  setListAdapter((ListAdapter) homeAdapter);
-        initView();//总方法
-
-
-    }
-
-    private void initView() {
-
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_recommend,container,false);
+        initView();//总方法
+        return view;
+    }
 
-        View ret = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_recommend,container,false);
-
-        return ret;
+    private void initView() {
 
     }
 
+
+    @Override
     public String getFragmentTitle() {
         return "推荐";
     }
