@@ -1,21 +1,22 @@
+
 package com.product.yuwei.view.home_viewholder;
 
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import android.os.Vibrator;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Switch;
 
 import com.product.yuwei.R;
 import com.product.yuwei.adapter.homeadapter.SidesPageAdapter;
 import com.product.yuwei.bean.homebean.Homepage_Slide;
 
+
 /**viewpager
  * Created by dd on 2016/10/30.
  */
+
 
 public class RecommendViewPagerHolder {
     private Context context;
@@ -28,11 +29,13 @@ public class RecommendViewPagerHolder {
     protected static final int MSG_KEEP_SILENT=2;
     //请求恢复轮播
     protected static final int MSG_BREAK_SILENT=3;
-    /**
+
+/**
      * 记录最新的页号，当用户手动滑动时需要记录新页号，否则会使轮播的页面出错。
      * 例如当前如果在第一页，本来准备播放的是第二页，而这时候用户滑动到了末页，
      * 则应该播放的是第一页，如果继续按照原来的第二页播放，则逻辑上有问题。
      */
+
     protected static final int MSG_PAGE_CHANGED=4;
     //轮播间隔时间
     protected static final long MSG_DELAY=3000;
@@ -118,3 +121,4 @@ public class RecommendViewPagerHolder {
         mHandler.sendEmptyMessageDelayed(MSG_UPDATE_IMAGE, MSG_DELAY);
     }
 }
+

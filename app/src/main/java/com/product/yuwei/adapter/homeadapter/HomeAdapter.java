@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.product.yuwei.bean.homebean.HomeItem;
-import com.product.yuwei.fragment.RecommendFragment;
 
 import java.util.List;
 
@@ -54,3 +53,4 @@ public class HomeAdapter extends BaseAdapter {
 
 
 }
+
