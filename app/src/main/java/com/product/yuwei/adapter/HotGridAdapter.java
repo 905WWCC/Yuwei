@@ -1,12 +1,12 @@
 package com.product.yuwei.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -63,28 +63,46 @@ public class HotGridAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             viewHolder.textView = (TextView) ret.findViewById(R.id.hot_text);
             viewHolder.imageView = (ImageView) ret.findViewById(R.id.hot_image);
+            viewHolder.nameText = (TextView) ret.findViewById(R.id.hot_author_name);
+            viewHolder.authorImage = (ImageView) ret.findViewById(R.id.hot_author);
+            viewHolder.numText = (TextView) ret.findViewById(R.id.hot_num);
             ret.setTag(viewHolder);
         }
 
         HotBase hotBase = list.get(position);
+        Log.e("position",position+"");
+
 
         String text = hotBase.getText();
+        String author = hotBase.getAuthor_uname();
+        String level = hotBase.getLevel();
+        int readnum = hotBase.getReadnum();
+        int plnum = hotBase.getPlnum();
+        int imgnum = hotBase.getImgnum();
 
+        Log.e("text",text);
         Glide
                 .with(context)
                 .load(hotBase.getCover())
                 .centerCrop()
                 .into(viewHolder.imageView);
 
+        Glide
+                .with(context)
+                .load(hotBase.getAuthor_header())
+                .centerCrop()
+                .into(viewHolder.authorImage);
+
+        viewHolder.nameText.setText(author + level);
         viewHolder.textView.setText(text);
+        viewHolder.numText.setText("关注" + readnum+ "收藏" + plnum);
 
         return ret;
     }
 
     private static class ViewHolder{
-        public LinearLayout header,end;
-        public TextView textView;
-        public ImageView imageView;
+        public TextView textView,nameText,numText;
+        public ImageView imageView,authorImage;
     }
 
 }

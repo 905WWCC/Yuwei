@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 
 import com.product.yuwei.R;
+import com.product.yuwei.adapter.HotGridAdapter;
 import com.product.yuwei.bean.BaseFragment;
 import com.product.yuwei.bean.HotBase;
 import com.product.yuwei.net.JsonTool;
@@ -48,8 +49,9 @@ public class HotFragment extends BaseFragment {
         byte[] arr = getData();
         try {
 
+            int id = 1;
             String json = new String(arr,"utf-8");
-            list = JsonTool.parserData(json);
+            list = JsonTool.parserData(json,id);
             Log.e("listData",list+"");
 
         } catch (UnsupportedEncodingException e) {
@@ -58,7 +60,8 @@ public class HotFragment extends BaseFragment {
             e.printStackTrace();
         }
 
-
+        HotGridAdapter adapter = new HotGridAdapter(context,list);
+        hotTitle.setAdapter(adapter);
 
         return ret;
     }

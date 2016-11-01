@@ -14,6 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
+            android:id="@+id/hot_author_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="30sp"
@@ -22,6 +23,8 @@
     <TextView
         android:id="@+id/hot_text"
         android:layout_width="match_parent"
+        android:lines="2"
+        android:ellipsize="end"
         android:layout_height="50dp" />
     <ImageView
         android:id="@+id/hot_image"

@@ -101,4 +101,78 @@ public class HotBase {
     public void setLevel(String level) {
         this.level = level;
     }
+
+    private String att_uname;
+    private String att_header;
+    private String att_desc;
+    private String att_vname;
+    private String att_label_name1;
+    private String att_label_name2;
+    private String att_label_name3;
+
+    public HotBase(String att_uname, String att_header, String att_desc, String att_vname, String att_label_name1, String att_label_name2, String att_label_name3) {
+        this.att_uname = att_uname;
+        this.att_header = att_header;
+        this.att_desc = att_desc;
+        this.att_vname = att_vname;
+        this.att_label_name1 = att_label_name1;
+        this.att_label_name2 = att_label_name2;
+        this.att_label_name3 = att_label_name3;
+    }
+
+    public String getAtt_desc() {
+        return att_desc;
+    }
+
+    public void setAtt_desc(String att_desc) {
+        this.att_desc = att_desc;
+    }
+
+    public String getAtt_uname() {
+        return att_uname;
+    }
+
+    public void setAtt_uname(String att_uname) {
+        this.att_uname = att_uname;
+    }
+
+    public String getAtt_header() {
+        return att_header;
+    }
+
+    public void setAtt_header(String att_header) {
+        this.att_header = att_header;
+    }
+
+    public String getAtt_vname() {
+        return att_vname;
+    }
+
+    public void setAtt_vname(String att_vname) {
+        this.att_vname = att_vname;
+    }
+
+    public String getAtt_label_name1() {
+        return att_label_name1;
+    }
+
+    public void setAtt_label_name1(String att_label_name1) {
+        this.att_label_name1 = att_label_name1;
+    }
+
+    public String getAtt_label_name2() {
+        return att_label_name2;
+    }
+
+    public void setAtt_label_name2(String att_label_name2) {
+        this.att_label_name2 = att_label_name2;
+    }
+
+    public String getAtt_label_name3() {
+        return att_label_name3;
+    }
+
+    public void setAtt_label_name3(String att_label_name3) {
+        this.att_label_name3 = att_label_name3;
+    }
 }
