@@ -13,6 +13,7 @@ import android.widget.RadioButton;
 
 import com.product.yuwei.R;
 import com.product.yuwei.fragment.LocalFragment;
+import com.product.yuwei.fragment.MyFragment;
 import com.product.yuwei.fragment.NoteFragment;
 import com.product.yuwei.fragment.RecommendFragment;
 
@@ -114,7 +115,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 myButton.setCompoundDrawablesWithIntrinsicBounds(null, my_click, null, null);
                 myButton.setTextColor(0xffFFA500);
                 if (myFragment == null) {
-                    myFragment = new NoteFragment(this);
+                    myFragment = new MyFragment();
                     fragmentTransaction.add(R.id.frame_layout,myFragment);
                 } else {
                     fragmentTransaction.show(myFragment);

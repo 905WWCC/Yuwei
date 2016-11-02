@@ -20,6 +20,7 @@ public class LocalFragment extends BaseFragment {
 
         View ret = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_local,container,false);
 
+
         return ret;
 
     }
