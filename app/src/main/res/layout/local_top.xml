@@ -1,0 +1,60 @@
+<RelativeLayout
+    android:id="@+id/findPageTitle"
+    android:background="@color/touming"
+    android:layout_width="fill_parent"
+    android:layout_height="45dp"
+    android:layout_alignParentTop="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:id="@+id/cityChooseLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true">
+        <TextView
+            android:textSize="14dp"
+            android:textColor="@color/white"
+            android:ellipsize="end"
+            android:id="@+id/city"
+            android:maxWidth="70dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="无服务"
+            android:singleLine="true"
+            android:layout_centerVertical="true" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="9dp"
+            android:src="@mipmap/city_choose_down"
+            android:layout_toRightOf="@+id/city"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/search_layout"
+        android:background="@mipmap/find_search_background"
+        android:layout_width="fill_parent"
+        android:layout_height="28dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="11dp"
+        android:layout_toRightOf="@+id/cityChooseLayout"
+        android:layout_centerVertical="true">
+        <ImageView android:id="@+id/search_icon_1"
+            android:background="@mipmap/icon_search_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="9dp"
+            android:layout_centerVertical="true" />
+        <TextView
+            android:textSize="12dp"
+            android:textColor="@color/white"
+            android:gravity="center_vertical"
+            android:id="@+id/search_text"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="11dp"
+            android:text="搜索目的地/餐厅/菜品/食记/用户"
+            android:layout_toRightOf="@+id/search_icon_1"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+
+</RelativeLayout>
