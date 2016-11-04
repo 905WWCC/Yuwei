@@ -1,5 +1,6 @@
 package com.product.yuwei.fragment.noteFragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -29,6 +30,12 @@ public class AttentionFragment extends BaseFragment {
     private ListView listView;
     private List<HotBase> list;
 
+    private Context context;
+
+    public AttentionFragment(Context context) {
+        this.context = context;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -51,7 +58,7 @@ public class AttentionFragment extends BaseFragment {
             e.printStackTrace();
         }
 
-        AttentionAdapter adapter = new AttentionAdapter(getContext(),list);
+        AttentionAdapter adapter = new AttentionAdapter(context,list);
         listView.setAdapter(adapter);
 
         return ret;

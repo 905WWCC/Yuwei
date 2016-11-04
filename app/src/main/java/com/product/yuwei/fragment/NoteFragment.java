@@ -40,7 +40,7 @@ public class NoteFragment extends BaseFragment {
         List<BaseFragment> fragments = new ArrayList<BaseFragment>();
 
         fragments.add(new HotFragment(context));
-        fragments.add(new AttentionFragment());
+        fragments.add(new AttentionFragment(context));
 
         CommonFragmentPagerAdapter adapter = new CommonFragmentPagerAdapter(getChildFragmentManager(),fragments);
         viewPager.setAdapter(adapter);

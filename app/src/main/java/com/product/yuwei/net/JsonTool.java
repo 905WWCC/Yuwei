@@ -17,7 +17,7 @@ public class JsonTool {
     public static List<HotBase> parserData(String jsonString,int id) throws JSONException {
 
         List<HotBase> list = new ArrayList<HotBase>();
-        HotBase hotBase = new HotBase();
+        HotBase hotBase = null;
 
         JSONObject object = new JSONObject(jsonString);
 
@@ -28,6 +28,8 @@ public class JsonTool {
             case 1:
                 for (int i = 0; i < dataList.length(); i++) {
                     JSONObject jsonObject = dataList.getJSONObject(i);
+
+                    hotBase = new HotBase();
 
                     String name = jsonObject.getString("name");
                     String cover = jsonObject.getString("cover");
@@ -60,6 +62,8 @@ public class JsonTool {
                 for (int i = 0; i < dataList.length(); i++) {
 
                     JSONObject jsonObject = dataList.getJSONObject(i);
+
+                    hotBase = new HotBase();
 
                     String att_uname = jsonObject.getString("uname");
                     String att_header = jsonObject.getString("header");

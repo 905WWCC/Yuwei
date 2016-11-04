@@ -5,8 +5,7 @@ package com.product.yuwei.bean;
  */
 public class HotBase {
 
-    public HotBase() {
-    }
+    public HotBase() {}
 
     private String name;
     private String cover;

@@ -1,7 +1,6 @@
 package com.product.yuwei.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +12,7 @@ import com.bumptech.glide.Glide;
 import com.product.yuwei.R;
 import com.product.yuwei.bean.HotBase;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -69,8 +69,8 @@ public class HotGridAdapter extends BaseAdapter {
             ret.setTag(viewHolder);
         }
 
+
         HotBase hotBase = list.get(position);
-        Log.e("position",position+"");
 
 
         String text = hotBase.getText();
@@ -80,10 +80,12 @@ public class HotGridAdapter extends BaseAdapter {
         int plnum = hotBase.getPlnum();
         int imgnum = hotBase.getImgnum();
 
-        Log.e("text",text);
+
+        String cover = hotBase.getCover();
+
         Glide
                 .with(context)
-                .load(hotBase.getCover())
+                .load(cover)
                 .centerCrop()
                 .into(viewHolder.imageView);
 
@@ -93,7 +95,10 @@ public class HotGridAdapter extends BaseAdapter {
                 .centerCrop()
                 .into(viewHolder.authorImage);
 
-        viewHolder.nameText.setText(author + level);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String date = format.format(new java.util.Date());
+
+        viewHolder.nameText.setText(author + " \t\t LV" + level + " \t\t " + date);
         viewHolder.textView.setText(text);
         viewHolder.numText.setText("关注" + readnum+ "收藏" + plnum);
 
