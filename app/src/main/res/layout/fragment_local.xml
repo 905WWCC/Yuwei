@@ -219,7 +219,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@+id/fold_text"
-                        android:background="@drawable/fold"/>
+                        android:background="@mipmap/fold"/>
                 </RelativeLayout>
             </RelativeLayout>
 
