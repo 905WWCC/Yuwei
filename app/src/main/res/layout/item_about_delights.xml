@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:id="@+id/homePageItemTitleLayoutWhole"
+        android:visibility="gone" android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <View
+            android:id="@+id/homeDivider"
+            android:background="@mipmap/home_divider"
+            android:layout_width="fill_parent"
+            android:layout_height="7.0dip" />
+        <RelativeLayout
+            android:gravity="center_vertical"
+            android:id="@+id/homePageItemTitleLayout"
+            android:paddingLeft="11.0dip"
+            android:paddingRight="11.0dip"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13.0dip"
+            android:layout_below="@+id/homeDivider">
+            <TextView
+                android:textSize="16.0dip"
+                android:textColor="@color/blackFont"
+                android:id="@+id/homePageItemTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:maxEms="12"
+                android:singleLine="true"
+                android:drawableLeft="@mipmap/home_orange_di"
+                android:drawablePadding="5.0dip" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <View
+        android:id="@+id/blankView1"
+        android:layout_width="fill_parent"
+        android:layout_height="10.0dip"
+        android:layout_below="@+id/homePageItemTitleLayoutWhole" />
+    <ImageView
+        android:id="@+id/cover"
+        android:layout_width="90.0dip"
+        android:layout_height="60.0dip"
+        android:layout_marginLeft="11.0dip"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_launcher"
+        android:layout_below="@+id/blankView1" />
+    <TextView
+        android:textSize="13.0dip"
+        android:textColor="@color/fontColor"
+        android:ellipsize="end"
+        android:id="@+id/name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginTop="10.0dip"
+        android:layout_marginRight="11.0dip"
+        android:text="wws"
+        android:singleLine="true"
+        android:layout_toRightOf="@+id/cover"
+        android:layout_below="@+id/blankView1" />
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginTop="10.0dip"
+        android:layout_toRightOf="@+id/cover"
+        android:layout_below="@+id/name">
+        <TextView
+            android:textSize="12.0dip"
+            android:textColor="@color/fontColor"
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="123"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:layout_centerVertical="true" />
+        <ImageView
+            android:id="@+id/authorHeader"
+            android:layout_width="14.0dip"
+            android:layout_height="14.0dip"
+            android:src="@mipmap/citymap_1"
+            android:layout_marginLeft="14.0dip"
+            android:layout_toRightOf="@+id/time" />
+        <TextView
+            android:textSize="12.0dip"
+            android:textColor="@color/fontColor"
+            android:ellipsize="end"
+            android:id="@+id/authorName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6.0dip"
+            android:layout_marginRight="11.0dip"
+            android:text=""
+            android:maxLines="1"
+            android:layout_toRightOf="@+id/authorHeader"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <View
+        android:id="@+id/divider"
+        android:background="@color/divider"
+        android:layout_width="fill_parent"
+        android:layout_height="1.0px"
+        android:layout_marginLeft="11.0dip"
+        android:layout_marginTop="10.0dip"
+        android:layout_marginRight="11.0dip"
+        android:layout_below="@+id/cover" />
+</RelativeLayout>

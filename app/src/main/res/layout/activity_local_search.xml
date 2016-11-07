@@ -1,0 +1,176 @@
+<?xml version="1" encoding="utf-8"?>
+<RelativeLayout 
+    android:id="@+id/main_root" 
+    android:background="#fff7f7f8"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout 
+        android:orientation="vertical" 
+        android:id="@+id/top_layout"
+        android:background="@color/black"
+        android:layout_width="fill_parent" 
+        android:layout_height="45dp">
+        <RelativeLayout 
+            android:background="@mipmap/find_search_background"
+            android:layout_width="fill_parent" 
+            android:layout_height="28dp" 
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="20dp" 
+            android:layout_toLeftOf="@+id/search_btn"
+            android:layout_centerVertical="true">
+            <ImageView
+                android:id="@+id/search_icon_iv"
+                android:layout_width="wrap_content" 
+                android:layout_height="wrap_content" 
+                android:layout_marginLeft="9dp" 
+                android:src="@mipmap/icon_search_home"
+                android:layout_centerVertical="true" />
+            <EditText
+                android:textSize="12dp" 
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" 
+                android:id="@+id/search_editview" 
+                android:background="@color/touming" 
+                android:layout_width="fill_parent" 
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="11dp" 
+                android:hint="选择所在城市..."
+                android:singleLine="true"
+                android:layout_toLeftOf="@+id/search_del_btn"
+                android:layout_toRightOf="@+id/search_icon_iv" 
+                android:layout_centerVertical="true" 
+                android:imeOptions="actionGo" />
+            <ImageView 
+                android:id="@+id/search_del_btn" 
+                android:layout_width="30dp"
+                android:layout_height="fill_parent"
+                android:src="@mipmap/search_delete"
+                android:scaleType="centerInside" 
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <Button 
+            android:textSize="16dp"
+            android:textColor="@color/white"
+            android:id="@+id/cancel"
+            android:background="@color/touming" 
+            android:layout_width="35dp"
+            android:layout_height="fill_parent" 
+            android:layout_marginRight="15dp"
+            android:text="取消" 
+            android:layout_alignParentRight="true" 
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/lbs_info_layout" 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top_layout">
+        <RelativeLayout 
+            android:id="@+id/lbs_not_open_layout"
+            android:background="#ffffeccc" 
+            android:layout_width="fill_parent"
+            android:layout_height="33dp">
+            <TextView
+                android:textSize="12dp" 
+                android:textColor="#ff727171"
+                android:gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" 
+                android:layout_marginLeft="23dp"
+                android:text="定位未开启"
+                android:drawableLeft="@mipmap/lbs_not_open"
+                android:drawablePadding="6dp" 
+                android:layout_centerVertical="true" />
+            <TextView
+                android:textSize="12dp"
+                android:textColor="#ff727171" 
+                android:gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp" 
+                android:text="立即开启"
+                android:drawableRight="@mipmap/right_arrow"
+                android:drawablePadding="13dp" 
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <RelativeLayout 
+            android:id="@+id/lbs_status_layout" 
+            android:background="@color/white"
+            android:layout_width="fill_parent"
+            android:layout_height="38dp" 
+            android:layout_below="@+id/lbs_not_open_layout">
+            <TextView
+                android:textSize="13dp" 
+                android:textColor="#ff727171"
+                android:id="@+id/lbs_status_tv" 
+                android:layout_width="wrap_content" 
+                android:layout_height="wrap_content" 
+                android:layout_marginLeft="23dp" 
+                android:text="正在定位城市..." 
+                android:layout_centerVertical="true" />
+            <TextView 
+                android:textSize="12dp" 
+                android:textColor="#ffa9a9a9" 
+                android:layout_width="wrap_content" 
+                android:layout_height="wrap_content" 
+                android:layout_marginLeft="10dp" 
+                android:text="GPS定位" 
+                android:layout_toRightOf="@+id/lbs_status_tv"
+                android:layout_centerVertical="true" />
+            <TextView 
+                android:textSize="11dp" 
+                android:textColor="#ff727171"
+                android:gravity="center" 
+                android:id="@+id/re_lbs_btn" 
+                android:background="@drawable/lbs_neaby_bg"
+                android:visibility="gone" 
+                android:layout_width="69dp" 
+                android:layout_height="24dp" 
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="23dp"
+                android:text="重新获取" 
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true" />
+            <View 
+                android:background="@color/divider" 
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <ExpandableListView
+        android:id="@+id/citylist"
+        android:background="#fff7f7f8" 
+        android:scrollbars="none" 
+        android:fadingEdge="none"
+        android:layout_width="fill_parent" 
+        android:layout_height="fill_parent" 
+        android:layout_marginTop="9dp" 
+        android:listSelector="@color/touming"
+        android:cacheColorHint="@color/touming" 
+        android:divider="@color/touming" 
+        android:layout_below="@+id/lbs_info_layout"
+        android:overScrollMode="never" />
+    <ImageView android:id="@+id/lbs_index_iv"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="42dp" 
+        android:src="@mipmap/lbs_index"
+        android:layout_alignParentRight="true" 
+        android:layout_alignParentBottom="true" />
+    <ListView android:id="@+id/city_search_list" 
+        android:background="@color/white"
+        android:visibility="gone" 
+        android:scrollbars="none" 
+        android:fadingEdge="none"
+        android:layout_width="fill_parent" 
+        android:layout_height="fill_parent" 
+        android:listSelector="@color/touming" 
+        android:cacheColorHint="@color/touming"
+        android:divider="@color/touming" 
+        android:layout_below="@+id/top_layout"
+        android:overScrollMode="never" />
+</RelativeLayout>

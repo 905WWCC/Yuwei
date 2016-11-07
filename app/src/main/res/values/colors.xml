@@ -456,5 +456,7 @@
     <color name="refresh_1">#15A0F5</color>
     <color name="refresh_2">#2AB042</color>
     <color name="blue_qian">#647896</color>
-
+    <drawable name="item_normal">#e5e5e6</drawable>
+    <drawable name="item_click">#A2A3A2</drawable>
+    <color name="fontColor">#ff909090</color>
 </resources>

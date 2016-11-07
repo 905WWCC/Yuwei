@@ -1,0 +1,187 @@
+<?xml version="1" encoding="utf-8"?>
+<RelativeLayout 
+    android:background="@color/white" 
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout 
+        android:orientation="vertical"
+        android:id="@+id/search_edit_top_layout" 
+        android:background="@color/black"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp">
+        <RelativeLayout 
+            android:background="@mipmap/find_search_background"
+            android:layout_width="fill_parent"
+            android:layout_height="28dp"
+            android:layout_marginLeft="16dp" 
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/search_btn"
+            android:layout_centerVertical="true">
+            <ImageView 
+                android:id="@+id/search_icon_iv" 
+                android:layout_width="wrap_content" 
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="9dp"
+                android:src="@mipmap/icon_search_home"
+                android:layout_centerVertical="true" />
+            <EditText
+                android:textSize="12dp"
+                android:textColor="@color/white" 
+                android:textColorHint="@color/white"
+                android:id="@+id/search_editview"
+                android:background="@color/touming" 
+                android:layout_width="fill_parent" 
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="11dp" 
+                android:hint="搜索目的地/餐厅/菜品/食记/用户"
+                android:singleLine="true" 
+                android:layout_toLeftOf="@+id/search_del_btn" 
+                android:layout_toRightOf="@+id/search_icon_iv" 
+                android:layout_centerVertical="true"
+                android:imeOptions="actionGo" />
+            <ImageView
+                android:id="@+id/search_del_btn" 
+                android:layout_width="30dp"
+                android:layout_height="fill_parent"
+                android:src="@mipmap/search_delete"
+                android:scaleType="centerInside"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <Button 
+            android:textSize="16dp" 
+            android:textColor="@color/white"
+            android:id="@+id/search_btn" 
+            android:background="@color/touming"
+            android:layout_width="45dp"
+            android:layout_height="fill_parent" 
+            android:layout_marginRight="15dp" 
+            android:text="取消"
+            android:layout_alignParentRight="true" 
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <RelativeLayout 
+        android:id="@+id/history_layout" 
+        android:layout_width="fill_parent" 
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="11dp" 
+        android:layout_marginTop="18dp" 
+        android:layout_marginRight="11dp"
+        android:layout_below="@+id/search_edit_top_layout">
+        <TextView
+            android:textSize="12dp" 
+            android:textColor="@color/fontColor_w" 
+            android:id="@+id/history_title"
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content"
+            android:text="最近搜索" />
+        <TextView
+            android:textSize="13dp" 
+            android:textColor="@color/fontColor_1" 
+            android:id="@+id/history_1"
+            android:layout_width="fill_parent" 
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp" 
+            android:layout_marginTop="18dp" 
+            android:text="" 
+            android:layout_below="@+id/history_title" />
+        <View 
+            android:id="@+id/divider1" 
+            android:background="@color/divider"
+            android:layout_width="fill_parent" 
+            android:layout_height="1px"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginRight="13dp"
+            android:layout_below="@+id/history_1" />
+        <TextView
+            android:textSize="13dp" 
+            android:textColor="@color/fontColor_1" 
+            android:id="@+id/history_2" 
+            android:layout_width="fill_parent" 
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp" 
+            android:layout_marginTop="13dp"
+            android:text="" 
+            android:layout_below="@+id/divider1" />
+        <View 
+            android:id="@+id/divider2" 
+            android:background="@color/divider"
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="14dp" 
+            android:layout_marginRight="13dp" 
+            android:layout_below="@+id/history_2" />
+        <TextView
+            android:textSize="13dp" 
+            android:textColor="@color/fontColor_1"
+            android:id="@+id/history_3" 
+            android:layout_width="fill_parent" 
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp" 
+            android:layout_marginTop="13dp" 
+            android:text="" 
+            android:layout_below="@+id/divider2" />
+        <TextView
+            android:textSize="12dp" 
+            android:textColor="@color/orange" 
+            android:id="@+id/history_remove" 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:text="清除历史" 
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <ImageView 
+        android:id="@+id/divider3" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:layout_marginTop="17dp"
+        android:src="@mipmap/home_divider"
+        android:layout_below="@+id/history_layout" />
+    <RelativeLayout 
+        android:id="@+id/hot_word_layout" 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" 
+        android:layout_marginLeft="11dp" 
+        android:layout_marginTop="13dp"
+        android:layout_marginRight="11dp"
+        android:layout_below="@+id/divider3">
+        <TextView
+            android:textSize="12dp" 
+            android:textColor="@color/fontColor_w"
+            android:id="@+id/search_title" 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:text="热门搜索" />
+        <FrameLayout
+            android:id="@+id/flowlayout" 
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="13dp"
+            android:layout_below="@+id/search_title" />
+    </RelativeLayout>
+    <ListView 
+        android:id="@+id/searchlistview"
+        android:background="@color/white" 
+        android:visibility="gone"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:listSelector="@color/touming" 
+        android:cacheColorHint="@color/touming"
+        android:divider="@null"
+        android:layout_below="@+id/search_edit_top_layout" 
+        android:headerDividersEnabled="true" />
+    <TextView
+        android:textSize="16dp" 
+        android:textColor="#ff727171" 
+        android:id="@+id/emptyView"
+        android:visibility="gone"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp" 
+        android:text="非常抱歉，并没有搜索到相关信息"
+        android:layout_below="@+id/search_edit_top_layout" 
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>

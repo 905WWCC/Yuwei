@@ -1,0 +1,76 @@
+<?xml version="1" encoding="utf-8"?>
+<RelativeLayout 
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout 
+        android:layout_width="fill_parent" 
+        android:layout_height="wrap_content" 
+        android:layout_marginLeft="11dp" 
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="11dp">
+        <ImageView
+            android:id="@+id/city_map_image" 
+            android:layout_width="73dp" 
+            android:layout_height="49dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher"/>
+        <TextView 
+            android:textSize="12dp"
+            android:textColor="@color/fontColor_1" 
+            android:id="@+id/city_map_rest_km" 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true" 
+            android:layout_centerVertical="true" />
+        <ImageView
+            android:id="@+id/city_map_mark"
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp" 
+            android:layout_marginTop="6dp"
+            android:src="@mipmap/citymap_1"
+            android:layout_toRightOf="@+id/city_map_image" />
+        <TextView 
+            android:textSize="14dp"
+            android:textColor="@color/blackFont" 
+            android:id="@+id/city_map_rest_name" 
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" 
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="6dp" 
+            android:singleLine="true" 
+            android:layout_toLeftOf="@+id/city_map_rest_km" 
+            android:layout_toRightOf="@+id/city_map_mark" />
+        <TextView 
+            android:textSize="12dp" 
+            android:textColor="@color/fontColor" 
+            android:id="@+id/city_map_rest_cost"
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp" 
+            android:layout_marginTop="12dp" 
+            android:singleLine="true" 
+            android:layout_toRightOf="@+id/city_map_image"
+            android:layout_below="@+id/city_map_rest_name" />
+        <TextView 
+            android:textSize="12dp" 
+            android:textColor="@color/fontColor" 
+            android:id="@+id/city_map_rest_type" 
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="11dp" 
+            android:layout_marginTop="12dp" 
+            android:singleLine="true" 
+            android:layout_toLeftOf="@+id/city_map_rest_km" 
+            android:layout_toRightOf="@+id/city_map_rest_cost"
+            android:layout_below="@+id/city_map_rest_name" />
+        <View 
+            android:id="@+id/blankView"
+            android:background="@color/divider" 
+            android:layout_width="fill_parent" 
+            android:layout_height="1px"
+            android:layout_marginTop="5dp" 
+            android:layout_below="@+id/city_map_image" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:gravity="center_vertical"
+        android:id="@+id/homeStrategyItemTitleLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13.0dip"
+        android:layout_marginBottom="10.0dip"
+        android:layout_below="@+id/homeDivider">
+        <TextView
+            android:textSize="16.0dip"
+            android:textColor="@color/blackFont"
+            android:id="@+id/homeStrategyItemTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="攻略锦囊"
+            android:maxEms="12"
+            android:singleLine="true"
+            android:drawableLeft="@mipmap/home_orange_di"
+            android:drawablePadding="8.0dip" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/strategyLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10.0dip"
+        android:layout_below="@+id/homeStrategyItemTitleLayout">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+        <RelativeLayout
+            android:id="@+id/str_1"
+            android:background="@mipmap/str_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</RelativeLayout>

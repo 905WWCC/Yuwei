@@ -1,29 +1,362 @@
-<com.product.yuwei.utils.FadingScrollView
+<com.product.yuwei.bean.localbean.FadingScrollView
     android:id="@+id/root"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-
-
-    <ImageView
-        android:id="@+id/fading_bar"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:src="@mipmap/img"
-        android:scaleType="centerCrop" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <TextView
-            android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/global"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <RelativeLayout
+            android:id="@+id/homeViewWholeLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:orientation="vertical"
+                android:id="@+id/homeViewThemeFlipperLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="209dp">
+                <ImageView
+                    android:id="@+id/home_image_view"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:src="@mipmap/home_page_default"
+                    android:scaleType="centerCrop" />
+                <View
+                    android:background="@mipmap/home_mengban"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_alignBottom="@+id/home_image_view" />
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:id="@+id/lessLabelLayout"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="17dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true" />
+                <ScrollView
+                    android:layout_gravity="bottom"
+                    android:id="@+id/id_horizontalScrollView"
+                    android:background="@color/touming"
+                    android:visibility="gone"
+                    android:scrollbars="none"
+                    android:fadingEdge="none"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="17dp"
+                    android:cacheColorHint="@color/touming"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true">
+                    <LinearLayout
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:id="@+id/shot_gallery"
+                        android:background="@color/touming"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </ScrollView>
+                <ImageView
+                    android:id="@+id/home_xinshou_dingwei"
+                    android:visibility="gone"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:src="@mipmap/home_youdingwei_xinshou"
+                    android:scaleType="fitXY" />
+                <ImageView
+                    android:id="@+id/homexinshou_wudingwei"
+                    android:visibility="gone"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:src="@mipmap/home_wudingwei_xinshoupng"
+                    android:scaleType="fitXY" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/outLayout"
+                android:background="#fff5f5f5"
+                android:visibility="gone"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45dp">
+                <ImageView
+                    android:id="@+id/outBackImage"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/out_of_service_back"
+                    android:scaleType="fitXY" />
+                <TextView
+                    android:textSize="13dp"
+                    android:textColor="@color/blackFont"
+                    android:gravity="center"
+                    android:id="@+id/fujinyibaiText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="11dp"
+                    android:layout_marginTop="10dp"
+                    android:text="附近100公里内的餐厅"
+                    android:layout_below="@+id/outBackImage" />
+            </RelativeLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/hot_word_layout"
+            android:visibility="gone"
+            android:layout_width="fill_parent"
+            android:layout_height="300dp"
+            android:layout_marginLeft="11dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginRight="11dp"
+            android:layout_below="@+id/homeViewWholeLayout">
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/fontColor_w"
+                android:id="@+id/search_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="热门搜索" />
+            <FrameLayout
+                android:id="@+id/flowlayout1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="13dp"
+                android:layout_below="@+id/search_title" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/mapLayout"
+            android:background="#fff5f5f5"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Center" />
+            android:layout_below="@+id/homeViewWholeLayout">
+            <RelativeLayout
+                android:id="@+id/mapViewLayout"
+                android:background="@color/white"
+                android:layout_width="fill_parent"
+                android:layout_height="150dp"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="11dp">
+                <com.baidu.mapapi.map.MapView
+                    android:id="@+id/bmapView"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginRight="2dp" />
+                <View
+                    android:id="@+id/click_area"
+                    android:background="@color/touming"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" />
+            </RelativeLayout>
+            <View
+                android:id="@+id/midArea"
+                android:background="@color/white"
+                android:layout_width="fill_parent"
+                android:layout_height="15dp"
+                android:layout_marginLeft="11dp"
+                android:layout_marginRight="11dp"
+                android:layout_below="@+id/mapViewLayout" />
+            <com.product.yuwei.bean.localbean.CustomListView
+                android:id="@+id/rest_listview"
+                android:background="@color/white"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:divider="@null"
+                android:layout_marginLeft="11dp"
+                android:layout_marginRight="11dp"
+                android:layout_below="@+id/midArea" />
 
-    </LinearLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/strategyLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mapLayout">
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="#ffffff"
+                android:id="@+id/delights_layout">
+                <TextView
+                    android:textSize="16dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/blackFont"
+                    android:id="@+id/delights"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="11dp"
+                    android:text="必吃美食"
+                    android:maxEms="12"
+                    android:singleLine="true"
+                    android:drawableLeft="@mipmap/home_orange_di"
+                    android:drawablePadding="5dp" />
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_below="@+id/delights"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#e5e5e6"/>
+                <RelativeLayout
+                    android:layout_below="@+id/recyclerView"
+                    android:id="@+id/unfold"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/fold_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:textColor="#ccc"
+                        android:textSize="18sp"
+                        android:text="展开全部特色菜"/>
+                    <ImageView
+                        android:layout_marginLeft="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/fold_text"
+                        android:background="@drawable/fold"/>
+                </RelativeLayout>
+            </RelativeLayout>
 
-</com.product.yuwei.utils.FadingScrollView>
+            <RelativeLayout
+                android:gravity="center_vertical"
+                android:id="@+id/strategyTitleLayout"
+                android:paddingLeft="11dp"
+                android:layout_below="@+id/delights_layout"
+                android:paddingRight="11dp"
+                android:background="#ffffff"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp">
+                <TextView
+                    android:textSize="16dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/blackFont"
+                    android:id="@+id/strategyItemTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="攻略锦囊"
+                    android:maxEms="12"
+                    android:singleLine="true"
+                    android:drawableLeft="@mipmap/home_orange_di"
+                    android:drawablePadding="5dp" />
+                <LinearLayout
+                    android:layout_below="@+id/strategyItemTitle"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1.0"
+                        android:layout_height="28dp"
+                        android:text="城市印象"
+                        android:gravity="center"
+                        android:background="@drawable/textview_border"
+                        android:layout_marginBottom="10dp"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1.0"
+                        android:layout_height="28dp"
+                        android:text="特别推荐"
+                        android:gravity="center"
+                        android:layout_marginLeft="8dp"
+                        android:background="@drawable/textview_border"
+                        android:layout_marginBottom="10dp"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1.0"
+                        android:layout_height="28dp"
+                        android:text="+ 撰写攻略"
+                        android:layout_marginLeft="8dp"
+                        android:gravity="center"
+                        android:background="@drawable/textview_border"
+                        android:layout_marginBottom="10dp"/>
+                </LinearLayout>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/flowlayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="#ffffff"
+                android:layout_below="@+id/strategyTitleLayout" >
+                <TextView
+                    android:textSize="16dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/blackFont"
+                    android:id="@+id/hall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="11dp"
+                    android:text="必去餐厅"
+                    android:maxEms="12"
+                    android:singleLine="true"
+                    android:drawableLeft="@mipmap/home_orange_di"
+                    android:drawablePadding="5dp" />
+                <com.product.yuwei.bean.localbean.CustomListView
+                    android:id="@+id/must_go_hall_listview"
+                    android:layout_marginTop="15dp"
+                    android:divider="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/hall"/>
+                <RelativeLayout
+                    android:id="@+id/scan_all"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/must_go_hall_listview">
+                    <TextView
+                        android:id="@+id/look_all"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12dp"
+                        android:textColor="#ffc5c5c5"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="查看全部餐厅"/>
+                    <ImageView
+                        android:layout_toRightOf="@+id/look_all"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:src="@mipmap/search_right_arrow"
+                        />
+                </RelativeLayout>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/about_visit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="#ffffff"
+                android:layout_below="@+id/flowlayout" >
+                <TextView
+                    android:textSize="16dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/blackFont"
+                    android:id="@+id/about_delights"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="11dp"
+                    android:text="相关美食游记"
+                    android:maxEms="12"
+                    android:drawableLeft="@mipmap/home_orange_di"
+                    android:drawablePadding="5dp" />
+                <com.product.yuwei.bean.localbean.CustomListView
+                    android:id="@+id/about_visit_listview"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/about_delights"/>
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</com.product.yuwei.bean.localbean.FadingScrollView>
  
