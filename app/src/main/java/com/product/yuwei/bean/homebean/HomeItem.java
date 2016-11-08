@@ -5,13 +5,13 @@ package com.product.yuwei.bean.homebean;
  */
 
 public class HomeItem {
-    private Homepage_Slide homepage_slide;//首页中的广告
+    private RecomPageBean homepage_slide;//首页中的广告
 
-    public Homepage_Slide getHomepage_slide() {
+    public RecomPageBean getHomepage_slide() {
         return homepage_slide;
     }
 
-    public void setHomepage_slide(Homepage_Slide homepage_slide) {
+    public void setHomepage_slide(RecomPageBean homepage_slide) {
         this.homepage_slide = homepage_slide;
     }
 }

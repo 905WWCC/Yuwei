@@ -9,6 +9,8 @@ import android.view.ViewParent;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.product.yuwei.bean.homebean.RecomBaseBean;
+import com.product.yuwei.bean.homebean.RecomPageBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,11 +21,13 @@ import java.util.Objects;
  */
 
 public class SidesPageAdapter extends PagerAdapter{
-    private List<ImageView> imageList=new ArrayList<ImageView>();
-    public SidesPageAdapter(Context context,String[] imgUrlList){
-        for (int i = 0; i <imgUrlList.length ; i++) {
+
+    private List<RecomPageBean> imageBeanList;
+    private List<ImageView> imageList;
+    public SidesPageAdapter(Context context,List<RecomPageBean> imageBeanList){
+        for (int i = 0; i <imageBeanList.size() ; i++) {
             ImageView imageView=new ImageView(context);
-            Glide.with(context).load(imgUrlList[i]).into(imageView);
+            Glide.with(context).load(imageBeanList.get(i).getImg()).into(imageView);
             imageList.add(imageView);
 
         }
@@ -34,6 +38,14 @@ public class SidesPageAdapter extends PagerAdapter{
         //设置成最大，使用户看不到边界
         return Integer.MAX_VALUE;
     }
+    @Override
+    public boolean isViewFromObject(View arg0, Object arg1) {
+        return arg0==arg1;
+    }
+    @Override
+    public void destroyItem(ViewGroup container, int position,Object object) {
+        //Warning：不要在这里调用removeView
+     }
 
     /////////////////////////////////
     public interface OnItemClickListener {
@@ -47,10 +59,7 @@ public class SidesPageAdapter extends PagerAdapter{
     }
     //////////////////////////////////////////////
 
-    @Override
-    public boolean isViewFromObject(View view, Object object) {
-        return view==object;
-    }
+
     @Override
     public Object instantiateItem(final ViewGroup container, int position){
         //对ViewPager页号求模取出View列表中要显示的项
