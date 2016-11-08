@@ -1,3 +1,4 @@
+/*
 package com.product.yuwei.net;
 
 import android.content.Context;
@@ -10,9 +11,11 @@ import android.widget.TextView;
 
 import com.product.yuwei.adapter.homeadapter.SidesPageAdapter;
 
+*/
 /**
  * Created by dd on 2016/11/7.
- */
+ *//*
+
 
 public class ImageHandler  extends Handler{
     Context context;
@@ -28,11 +31,13 @@ public class ImageHandler  extends Handler{
     protected static final int MSG_KEEP_SILENT=2;
     //请求恢复轮播
     protected static final int MSG_BREAK_SILENT=3;
-    /**
+    */
+/**
      * 记录最新的页号，当用户手动滑动时需要记录新页号，否则会使轮播的页面出错。
      * 例如当前如果在第一页，本来准备播放的是第二页，而这时候用户滑动到了末页，
      * 则应该播放的是第一页，如果继续按照原来的第二页播放，则逻辑上有问题。
-     */
+     *//*
+
     protected static final int MSG_PAGE_CHANGED=4;
     //轮播间隔时间
     protected static final long MSG_DELAY=3000;
@@ -121,3 +126,4 @@ public class ImageHandler  extends Handler{
         mHandler.sendEmptyMessageDelayed(MSG_UPDATE_IMAGE, MSG_DELAY);
     }
 }
+*/

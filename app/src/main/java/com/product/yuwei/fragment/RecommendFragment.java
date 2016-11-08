@@ -42,7 +42,7 @@ public class RecommendFragment extends Fragment {
     private ListView mainListView;//整体以listview实现
     private RelativeLayout rlSearchBar;//搜索框
   //private HomeAdapter mAdapter;
-    private RecomBaseBean basebean=new RecomBaseBean();
+  private RecomBaseBean basebean;
 
 
     private ArrayList<Crime> Crimes;
@@ -100,18 +100,18 @@ public class RecommendFragment extends Fragment {
 
     private void initView() {
         //获取数据
-        addPagerHeader();//滑动图片视图
-        addSearchView();//搜索框视图
-        addMiqilingView();//米其林视图
-        addGridView();//滑动视图
-        addBanVIew();//榜单视图
+       // addPagerHeader();//滑动图片视图
+     //   addSearchView();//搜索框视图
+       // addMiqilingView();//米其林视图
+        //addGridView();//滑动视图
+      //  addBanVIew();//榜单视图
         basebean.getNote_list();
         HomeAdapter homeAdapter=new HomeAdapter(getContext(),basebean.getNote_list());//传入上下文还有数组参数
         mainListView.setAdapter(homeAdapter);
     }
 
     private void addSearchView() {
-        View.
+
     }
 
     private void addPagerHeader() {
@@ -119,16 +119,7 @@ public class RecommendFragment extends Fragment {
 
     }
 
-    public ArrayList<Crime> getCrimes(){
-        Crimes = new ArrayList<Crime>();
-        for (int i = 0; i < 100; i++) {
-            Crime c = new Crime();
-            c.setTitle("Crime #" + i);
-            c.setSolved(i % 2 == 0); // 相差一
-            Crimes.add(c);
-        }
-        return Crimes;
-    }
+
 
 /*
     @Override
