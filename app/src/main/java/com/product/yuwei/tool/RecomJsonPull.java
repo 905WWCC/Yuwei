@@ -22,7 +22,7 @@ import java.util.List;
  * Created by dd on 2016/11/4.
  */
 
-public class RecomJsonPull {
+public  class RecomJsonPull {
     private static final String TAG = "recompull";
 
     public static RecomBaseBean pullRecomjson(String jsonString)throws JSONException{
@@ -166,7 +166,7 @@ public class RecomJsonPull {
             recomnotebean.setCity(note_content.getJSONObject(i).getString("city"));
             JSONObject note_author=note_content.getJSONObject(i).getJSONObject("author");
             recomnotebean.setAuthor_name(note_author.getString("uname"));
-            recomnotebean.setAuthor_img(note_author.getString("header"));;
+            recomnotebean.setAuthor_img(note_author.getString("header"));
             list_notebean.add(recomnotebean);
         }
         recombasebean.setNote_list(list_notebean);

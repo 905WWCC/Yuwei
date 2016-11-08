@@ -27,6 +27,7 @@ public class RecomBaseBean {
     private String note_subtitle;
     private List<RecomNoteBean> note_list;
     private List<JSONObject> json_note_author;
+    public  RecomBaseBean(){}
 
 
     public List<RecomHotBean> getList_hot1() {
