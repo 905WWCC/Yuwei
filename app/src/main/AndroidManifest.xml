@@ -12,20 +12,28 @@
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="ElnXjCdAW4NQaDPqyzw9GZIE9pTO8wR5" />
-
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.GuideActivity" >
+        <activity android:name=".activity.GuideActivity">
         </activity>
-        <activity android:name=".activity.MainActivity" >
+        <activity android:name=".activity.MainActivity">
         </activity>
+        <activity android:name=".activity.local.CityIntroductionActivity"/>
+        <activity android:name=".activity.local.CityListActivity"/>
+        <activity android:name=".activity.local.LocalSearchActivity"/>
     </application>
     <!-- 获取网络权限-->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <!-- 这个权限用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 这个权限用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 </manifest>

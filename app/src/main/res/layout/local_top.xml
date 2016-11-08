@@ -1,6 +1,6 @@
 <RelativeLayout
     android:id="@+id/findPageTitle"
-    android:background="@color/touming"
+    android:background="@color/transparent"
     android:layout_width="fill_parent"
     android:layout_height="45dp"
     android:layout_alignParentTop="true"

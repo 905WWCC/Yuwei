@@ -6,10 +6,13 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
-
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,8 +32,6 @@ import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
-
-
 import com.product.yuwei.R;
 import com.product.yuwei.activity.local.CityIntroductionActivity;
 import com.product.yuwei.activity.local.CityListActivity;
@@ -38,12 +39,12 @@ import com.product.yuwei.activity.local.LocalSearchActivity;
 import com.product.yuwei.adapter.localadapter.AboutDelightsAdapter;
 import com.product.yuwei.adapter.localadapter.ListViewAdapter;
 import com.product.yuwei.adapter.localadapter.MustGoHallAadapter;
-import com.product.yuwei.bean.BaseFragment;
+import com.product.yuwei.adapter.localadapter.MyAdapter;
 import com.product.yuwei.bean.localbean.FadingScrollView;
+import com.product.yuwei.bean.localbean.MyItemBean;
 import com.product.yuwei.bean.localbean.MyItemClickListener;
 import com.product.yuwei.bean.localbean.MyItemLongClickListener;
-import com.product.yuwei.adapter.localadapter.MyAdapter;
-import com.product.yuwei.bean.localbean.MyItemBean;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +52,7 @@ import java.util.List;
 /**
  * Created by teng on 10/14/16.
  */
-public class LocalFragment extends BaseFragment implements View.OnClickListener,MyItemClickListener,MyItemLongClickListener {
+public class LocalFragment extends Fragment implements View.OnClickListener,MyItemClickListener,MyItemLongClickListener {
     private ActionBar actionBar;
     private FadingScrollView fadingScrollView;
     private TextView city,search;
@@ -156,11 +157,16 @@ public class LocalFragment extends BaseFragment implements View.OnClickListener,
     public void setActionBarLayout(int layoutId ){
 
         if( actionBar != null){
-            actionBar.setDisplayShowHomeEnabled( false );
+
+            actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+            actionBar.setDisplayShowHomeEnabled(false);
             actionBar.setDisplayShowCustomEnabled(true);
-            LayoutInflater inflator = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View v = inflator.inflate(layoutId, null);
-            ActionBar.LayoutParams layout = new   ActionBar.LayoutParams(android.app.ActionBar.LayoutParams.MATCH_PARENT,
+            actionBar.setDisplayShowTitleEnabled(false);
+
+
+            LayoutInflater inflater = (LayoutInflater)getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View v = inflater.inflate(layoutId, null);
+            ActionBar.LayoutParams layout = new  ActionBar.LayoutParams(android.app.ActionBar.LayoutParams.MATCH_PARENT,
                     android.app.ActionBar.LayoutParams.MATCH_PARENT);
             actionBar.setCustomView(v,layout);
         }
@@ -168,11 +174,12 @@ public class LocalFragment extends BaseFragment implements View.OnClickListener,
 
     void initActionBar(){
 
-        TypedArray actionbarSizeTypedArray = getActivity().getBaseContext().obtainStyledAttributes(new int[]{android.R.attr.actionBarSize});
+        TypedArray actionbarSizeTypedArray = getActivity().obtainStyledAttributes(new int[] { android.R.attr.actionBarSize });
         float height = actionbarSizeTypedArray.getDimension(0, 0);
         fadingScrollView.setFadingOffset((int) height);
 
-//        actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
+        actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
+
         ColorDrawable bgDrawable=new ColorDrawable(getResources().getColor(R.color.transparent));
         fadingScrollView.bindingActionBar(actionBar);
         try {
@@ -181,11 +188,6 @@ public class LocalFragment extends BaseFragment implements View.OnClickListener,
             e.printStackTrace();
         }
 
-    }
-
-    @Override
-    public String getFragmentTitle() {
-        return null;
     }
 
 

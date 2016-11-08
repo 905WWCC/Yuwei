@@ -55,7 +55,6 @@
     <color name="text_color_shurukuang_aeb6bd">#ffaeb6bd</color>
     <color name="text_color_zhongheise_461bd4">#ff461bd4</color>
     <color name="text_color_zhonghongse_461b04">#ff461b04</color>
-    <color name="touming">#00000000</color>
     <color name="umeng_fb_audo_dialog_bg">#f4f0745f</color>
     <color name="umeng_fb_gray">#ffd8d8d8</color>
     <color name="umeng_fb_lightblue">#ff0fb0a8</color>
@@ -94,7 +93,7 @@
 
     <color name="light_grey">#D3D3D3</color>
 
-    <color name="transparent">#00000000</color>
+    <color name="transparent">#e0000000</color>
     <color name="white">#fff</color>
     <color name="title_sea_green">#20B2AA</color>
     <color name="play_spot_bg">#80000000</color>
@@ -459,4 +458,5 @@
     <drawable name="item_normal">#e5e5e6</drawable>
     <drawable name="item_click">#A2A3A2</drawable>
     <color name="fontColor">#ff909090</color>
+    <color name="touming">#00000000</color>
 </resources>

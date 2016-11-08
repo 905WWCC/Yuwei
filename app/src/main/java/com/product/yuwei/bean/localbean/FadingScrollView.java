@@ -23,7 +23,7 @@ public class FadingScrollView extends ScrollView {
 
     private RelativeLayout fadingBar;
 
-    private int fadingHeight;   //�����صĿؼ��߶�
+    private int fadingHeight;
     private int oldY;
     private int fadingOffset;
 
