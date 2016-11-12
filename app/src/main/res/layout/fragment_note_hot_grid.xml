@@ -44,22 +44,9 @@
         android:id="@+id/hot_num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="10dp"
+        android:textSize="17sp"
         />
-
-    <!--<LinearLayout-->
-        <!--android:id="@+id/hot_end"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="50dp"-->
-        <!--android:orientation="horizontal"-->
-        <!-->-->
-        <!--<TextView-->
-            <!--android:id="@+id/hot_num"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textSize="30sp"-->
-            <!--/>-->
-
-    <!--</LinearLayout>-->
 
 </LinearLayout>
