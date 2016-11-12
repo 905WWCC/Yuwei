@@ -18,7 +18,10 @@ import com.product.yuwei.bean.homebean.RecomNoteBean;
 import com.product.yuwei.bean.localbean.MyViewHolder;
 import com.wx.ovalimageview.RoundImageView;
 
+import java.sql.Time;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -36,8 +39,11 @@ public class HomeAdapter extends BaseAdapter {
     private final static int GRIDVIEW=3;//滑动九宫格
     private final static int RANK=4;//米其林榜单
     private final static  int LIST=5;//最后的列表
-
-
+    //刷新list列表的参数
+    public void refreshData(List<RecomNoteBean> note_list) {
+        this.note_list=note_list;
+        notifyDataSetChanged();
+    }
 
     public HomeAdapter(Context context , List<RecomNoteBean> note_list){
         this.context=context;
@@ -60,19 +66,23 @@ public class HomeAdapter extends BaseAdapter {
     //getview是最关键的方法
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
-        ViewHolder holder = null;
+        View view=null;
 
-        if(convertView==null){
-             holder = new ViewHolder();
-            convertView=mLayoutInflater.inflate(R.layout.recommend_item,null);
-            holder.itemImage= (ImageView) convertView.findViewById(R.id.id_item_iv);
-            holder.itemTitle= (TextView) convertView.findViewById(R.id.id_item_title);
-            holder.itemTime= (TextView) convertView.findViewById(R.id.id_item_time);
-            holder.itemUName= (TextView) convertView.findViewById(R.id.id_item_uname);
-            holder.itemUImage=(RoundImageView)convertView.findViewById(R.id.id_item_iv_user);
-            convertView.setTag(holder);
+
+        if(convertView!=null){
+            view =convertView;
         }else{
-            holder = (ViewHolder) convertView.getTag();
+            view =LayoutInflater.from(context).inflate(R.layout.recommend_item,parent,false);
+
+        }
+        ViewHolder holder = (ViewHolder) view.getTag();
+        if(holder==null){
+            holder=new ViewHolder();
+            holder.itemImage= (ImageView) view.findViewById(R.id.id_item_iv);
+            holder.itemTitle= (TextView) view.findViewById(R.id.id_item_title);
+            holder.itemTime= (TextView) view.findViewById(R.id.id_item_time);
+            holder.itemUName= (TextView) view.findViewById(R.id.id_item_uname);
+            holder.itemUImage= (ImageView) view.findViewById(R.id.id_item_iv_user);
         }
 
         //取出数据
@@ -89,15 +99,15 @@ public class HomeAdapter extends BaseAdapter {
                 .centerCrop()
                 .into(holder.itemUImage);
         holder.itemTitle.setText(noteBean.getName());
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd",
-                Locale.getDefault());
-        String time=sdf.format(noteBean.getTime());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd",Locale.getDefault());
+        String strtime= noteBean.getTime();
+        long ltime=Long.valueOf(strtime);
+
+        String time=sdf.format(new Date(ltime*1000L));//这里传入要long并且1000倍才行，不然将显示最初时间
         holder.itemTime.setText(time);
-
+        holder.itemTitle.setText(noteBean.getName());
         holder.itemUName.setText(noteBean.getAuthor_name());
-
-
-        return convertView;
+        return view;
     }
 
 
@@ -106,7 +116,7 @@ public class HomeAdapter extends BaseAdapter {
         public  TextView itemTitle;
         public  TextView itemTime;
         public  TextView itemUName;
-        public RoundImageView itemUImage;
+        public ImageView itemUImage;
     }
 }
 

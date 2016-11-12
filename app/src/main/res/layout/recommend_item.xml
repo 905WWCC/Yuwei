@@ -7,17 +7,17 @@
         <ImageView
             android:layout_width="80dp"
             android:layout_height="match_parent"
-           android:src="@mipmap/test_item"
+            android:src="@mipmap/test_item"
             android:layout_margin="10dp"
             android:id="@+id/id_item_iv" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="孤独的美食家——日本美食套路之旅"
             android:ellipsize="end"
             android:layout_toEndOf="@+id/id_item_iv"
             android:maxLines="1"
+            android:text="孤独的美食家——日本美食套路之旅"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="5dp"
             android:id="@+id/id_item_title"
@@ -26,33 +26,45 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2016.03.07"
             android:layout_alignBottom="@+id/id_item_iv"
             android:layout_toEndOf="@+id/id_item_iv"
             android:layout_marginLeft="5dp"
+            android:text="2016.03.07"
             android:layout_marginBottom="10dp"
             android:id="@+id/id_item_time"
              />
 
-        <com.wx.roundimageview.RoundImageView
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_centerInParent="true"
-            android:layout_alignBottom="@+id/id_item_time"
-            android:layout_toEndOf="@+id/id_item_time"
-            android:id="@+id/id_item_iv_user"
-            android:src="@mipmap/item_user"/>
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_centerInParent="true"
+        android:layout_alignBottom="@+id/id_item_time"
+        android:layout_toEndOf="@+id/id_item_time"
+        android:src="@mipmap/item_user"
+        android:id="@+id/id_item_iv_user"
+        />
          <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="碎片化的小尾巴"
+             android:text="碎片化的小尾巴"
              android:maxLines="1"
              android:ellipsize="end"
             android:layout_marginLeft="10dp"
             android:layout_alignBottom="@+id/id_item_iv_user"
             android:layout_toEndOf="@+id/id_item_iv_user"
              android:id="@+id/id_item_uname" />
+    <View
+        android:layout_width="match_parent"
+        android:background="#cecece"
+        android:layout_height="1dp"
+        android:layout_marginBottom="-10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignBottom="@+id/id_item_iv">
+
+    </View>
+
         
 
 </RelativeLayout>

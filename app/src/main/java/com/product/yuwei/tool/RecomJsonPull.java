@@ -164,6 +164,7 @@ public  class RecomJsonPull {
             recomnotebean.setUrl(note_content.getJSONObject(i).getString("url"));
             recomnotebean.setCover(note_content.getJSONObject(i).getString("cover"));
             recomnotebean.setCity(note_content.getJSONObject(i).getString("city"));
+            recomnotebean.setTime(note_content.getJSONObject(i).getString("time"));
             JSONObject note_author=note_content.getJSONObject(i).getJSONObject("author");
             recomnotebean.setAuthor_name(note_author.getString("uname"));
             recomnotebean.setAuthor_img(note_author.getString("header"));

@@ -9,4 +9,33 @@
         android:id="@+id/lv_fragment_recommend"
         android:divider="@null"
         />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:id="@+id/ll_search"
+        android:layout_height="45dp"
+
+        >
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:background="@drawable/shape_search">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:scaleY="0.8"
+                android:scaleX="0.8"
+                android:src="@mipmap/search_home"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="寻找你想去吃的地方"
+                android:paddingLeft="10dp"/>
+
+        </LinearLayout>
+    </LinearLayout>
 </FrameLayout>
