@@ -1,7 +1,6 @@
 package com.product.yuwei.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,10 +77,9 @@ public class AttentionAdapter extends BaseAdapter {
         String label2 = hotBase.getAtt_label_name2();
         String label3 = hotBase.getAtt_label_name3();
 
-        Log.e("uname",uname);
-        Log.e("vname",vname);
-        Log.e("desc",desc);
-
+//        Log.e("uname", label1);
+//        Log.e("vname",label2);
+//        Log.e("desc",label3);
 
         Glide
                 .with(context)
@@ -93,7 +91,6 @@ public class AttentionAdapter extends BaseAdapter {
         viewHolder.vnameText.setText(vname);
         viewHolder.descText.setText(desc);
         viewHolder.labelText.setText(label1 + label2 + label3);
-
 
         return ret;
     }

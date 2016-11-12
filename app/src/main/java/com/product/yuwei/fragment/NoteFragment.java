@@ -45,7 +45,7 @@ public class NoteFragment extends BaseFragment {
         CommonFragmentPagerAdapter adapter = new CommonFragmentPagerAdapter(getChildFragmentManager(),fragments);
         viewPager.setAdapter(adapter);
 
-        tabLayout.setupWithViewPager(viewPager);
+//        tabLayout.setupWithViewPager(viewPager);
 
         return ret;
     }

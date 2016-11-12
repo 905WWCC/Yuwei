@@ -3,7 +3,6 @@ package com.product.yuwei.fragment.noteFragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,7 +51,7 @@ public class HotFragment extends BaseFragment {
             int id = 1;
             String json = new String(arr,"utf-8");
             list = JsonTool.parserData(json,id);
-            Log.e("listData",list+"");
+//            Log.e("listData",list+"");
 
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

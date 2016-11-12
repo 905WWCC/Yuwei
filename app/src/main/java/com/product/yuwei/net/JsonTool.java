@@ -16,16 +16,16 @@ public class JsonTool {
 
     public static List<HotBase> parserData(String jsonString,int id) throws JSONException {
 
-        List<HotBase> list = new ArrayList<HotBase>();
-        HotBase hotBase = null;
-
-        JSONObject object = new JSONObject(jsonString);
-
-        JSONObject data = object.getJSONObject("data");
-        JSONArray dataList = data.getJSONArray("list");
+        List<HotBase> list = null;
 
         switch (id){
             case 1:
+                list = new ArrayList<HotBase>();
+                HotBase hotBase = null;
+                JSONObject object = new JSONObject(jsonString);
+
+                JSONObject data = object.getJSONObject("data");
+                JSONArray dataList = data.getJSONArray("list");
                 for (int i = 0; i < dataList.length(); i++) {
                     JSONObject jsonObject = dataList.getJSONObject(i);
 
@@ -33,6 +33,8 @@ public class JsonTool {
 
                     String name = jsonObject.getString("name");
                     String cover = jsonObject.getString("cover");
+                    int vote = jsonObject.getInt("vote");
+                    int fav = jsonObject.getInt("fav");
                     int plnum = jsonObject.getInt("plnum");
                     int imgnum = jsonObject.getInt("imgnum");
                     int readnum = jsonObject.getInt("readnum");
@@ -46,6 +48,8 @@ public class JsonTool {
 
                     hotBase.setName(name);
                     hotBase.setCover(cover);
+                    hotBase.setVote(vote);
+                    hotBase.setFav(fav);
                     hotBase.setPlnum(plnum);
                     hotBase.setImgnum(imgnum);
                     hotBase.setReadnum(readnum);
@@ -58,12 +62,18 @@ public class JsonTool {
                 }
                 break;
             case 2:
+                list = new ArrayList<HotBase>();
+                HotBase hotBase1 = null;
+                JSONObject object1 = new JSONObject(jsonString);
 
-                for (int i = 0; i < dataList.length(); i++) {
+                JSONObject data1 = object1.getJSONObject("data");
+                JSONArray dataList1 = data1.getJSONArray("list");
 
-                    JSONObject jsonObject = dataList.getJSONObject(i);
+                for (int i = 0; i < dataList1.length(); i++) {
 
-                    hotBase = new HotBase();
+                    JSONObject jsonObject = dataList1.getJSONObject(i);
+
+                    hotBase1 = new HotBase();
 
                     String att_uname = jsonObject.getString("uname");
                     String att_header = jsonObject.getString("header");
@@ -76,23 +86,18 @@ public class JsonTool {
                     String att_label_name3 = label.getJSONObject(2).getString("name");
 
 
-                    hotBase.setAtt_header(att_header);
-                    hotBase.setAtt_uname(att_uname);
-                    hotBase.setAtt_desc(att_desc);
-                    hotBase.setAtt_vname(att_vname);
-                    hotBase.setAtt_label_name1(att_label_name1);
-                    hotBase.setAtt_label_name2(att_label_name2);
-                    hotBase.setAtt_label_name3(att_label_name3);
+                    hotBase1.setAtt_header(att_header);
+                    hotBase1.setAtt_uname(att_uname);
+                    hotBase1.setAtt_desc(att_desc);
+                    hotBase1.setAtt_vname(att_vname);
+                    hotBase1.setAtt_label_name1(att_label_name1);
+                    hotBase1.setAtt_label_name2(att_label_name2);
+                    hotBase1.setAtt_label_name3(att_label_name3);
 
-                    list.add(hotBase);
-
+                    list.add(hotBase1);
                 }
                 break;
-
         }
-
-
-
         return list;
     }
 

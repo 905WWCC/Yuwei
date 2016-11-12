@@ -76,6 +76,8 @@ public class HotGridAdapter extends BaseAdapter {
         String text = hotBase.getText();
         String author = hotBase.getAuthor_uname();
         String level = hotBase.getLevel();
+        int vote = hotBase.getVote();
+        int fav = hotBase.getFav();
         int readnum = hotBase.getReadnum();
         int plnum = hotBase.getPlnum();
         int imgnum = hotBase.getImgnum();
@@ -98,9 +100,9 @@ public class HotGridAdapter extends BaseAdapter {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         String date = format.format(new java.util.Date());
 
-        viewHolder.nameText.setText(author + " \t\t LV" + level + " \t\t " + date);
+        viewHolder.nameText.setText(author + " \t\t LV" + level + " \t\t\t\t " + date);
         viewHolder.textView.setText(text);
-        viewHolder.numText.setText("关注" + readnum+ "收藏" + plnum);
+        viewHolder.numText.setText(fav + "赞\t" + vote + "评论\t" + readnum+ "阅读");
 
         return ret;
     }
