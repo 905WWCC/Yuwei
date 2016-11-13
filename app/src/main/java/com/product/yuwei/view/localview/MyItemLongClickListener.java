@@ -1,4 +1,4 @@
-package com.product.yuwei.bean.localbean;
+package com.product.yuwei.view.localview;
 
 import android.view.View;
 

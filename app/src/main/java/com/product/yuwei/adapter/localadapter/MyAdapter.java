@@ -6,9 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.product.yuwei.R;
-import com.product.yuwei.bean.localbean.MyItemClickListener;
-import com.product.yuwei.bean.localbean.MyItemLongClickListener;
-import com.product.yuwei.bean.localbean.MyViewHolder;
+import com.product.yuwei.view.localview.MyItemClickListener;
+import com.product.yuwei.view.localview.MyItemLongClickListener;
+import com.product.yuwei.view.localview.MyViewHolder;
 import com.product.yuwei.bean.localbean.MyItemBean;
 
 import java.util.List;

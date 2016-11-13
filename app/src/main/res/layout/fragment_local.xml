@@ -160,7 +160,7 @@
                 android:layout_marginLeft="11dp"
                 android:layout_marginRight="11dp"
                 android:layout_below="@+id/mapViewLayout" />
-            <com.product.yuwei.bean.localbean.CustomListView
+            <com.product.yuwei.view.localview.CustomListView
                 android:id="@+id/rest_listview"
                 android:background="@color/white"
                 android:layout_width="fill_parent"
@@ -306,7 +306,7 @@
                     android:singleLine="true"
                     android:drawableLeft="@mipmap/home_orange_di"
                     android:drawablePadding="5dp" />
-                <com.product.yuwei.bean.localbean.CustomListView
+                <com.product.yuwei.view.localview.CustomListView
                     android:id="@+id/must_go_hall_listview"
                     android:layout_marginTop="15dp"
                     android:divider="@null"
@@ -356,7 +356,7 @@
                     android:maxEms="12"
                     android:drawableLeft="@mipmap/home_orange_di"
                     android:drawablePadding="5dp" />
-                <com.product.yuwei.bean.localbean.CustomListView
+                <com.product.yuwei.view.localview.CustomListView
                     android:id="@+id/about_visit_listview"
                     android:layout_marginTop="15dp"
                     android:layout_width="match_parent"

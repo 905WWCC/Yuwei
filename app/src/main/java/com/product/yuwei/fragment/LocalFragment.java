@@ -37,10 +37,10 @@ import com.product.yuwei.adapter.localadapter.AboutDelightsAdapter;
 import com.product.yuwei.adapter.localadapter.ListViewAdapter;
 import com.product.yuwei.adapter.localadapter.MustGoHallAadapter;
 import com.product.yuwei.adapter.localadapter.MyAdapter;
-import com.product.yuwei.bean.localbean.FadingScrollView;
+import com.product.yuwei.view.localview.FadingScrollView;
 import com.product.yuwei.bean.localbean.MyItemBean;
-import com.product.yuwei.bean.localbean.MyItemClickListener;
-import com.product.yuwei.bean.localbean.MyItemLongClickListener;
+import com.product.yuwei.view.localview.MyItemClickListener;
+import com.product.yuwei.view.localview.MyItemLongClickListener;
 
 
 import java.util.ArrayList;

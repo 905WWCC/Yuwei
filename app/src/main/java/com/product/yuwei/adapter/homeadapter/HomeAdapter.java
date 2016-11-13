@@ -2,7 +2,6 @@ package com.product.yuwei.adapter.homeadapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -11,16 +10,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.product.yuwei.R;
-import com.product.yuwei.adapter.HotGridAdapter;
-import com.product.yuwei.bean.homebean.HomeItem;
-import com.product.yuwei.bean.homebean.RecomBaseBean;
 import com.product.yuwei.bean.homebean.RecomNoteBean;
-import com.product.yuwei.bean.localbean.MyViewHolder;
-import com.wx.ovalimageview.RoundImageView;
 
-import java.sql.Time;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
