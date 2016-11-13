@@ -1,8 +1,10 @@
-<com.product.yuwei.bean.localbean.FadingScrollView
+<ScrollView
     android:id="@+id/root"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:scrollbars="none"
+    android:background="#fff5f5f5">
     <RelativeLayout
         android:id="@+id/global"
         android:layout_width="fill_parent"
@@ -167,17 +169,16 @@
                 android:layout_marginLeft="11dp"
                 android:layout_marginRight="11dp"
                 android:layout_below="@+id/midArea" />
-
         </RelativeLayout>
         <RelativeLayout
             android:id="@+id/strategyLayout"
             android:layout_width="fill_parent"
+            android:layout_marginTop="10dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/mapLayout">
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:background="#ffffff"
                 android:id="@+id/delights_layout">
                 <TextView
@@ -198,7 +199,7 @@
                     android:layout_below="@+id/delights"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#e5e5e6"/>
+                    android:background="#ffffff"/>
                 <RelativeLayout
                     android:layout_below="@+id/recyclerView"
                     android:id="@+id/unfold"
@@ -211,7 +212,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:textColor="#ccc"
-                        android:textSize="18sp"
+                        android:textSize="12sp"
                         android:text="展开全部特色菜"/>
                     <ImageView
                         android:layout_marginLeft="8dp"
@@ -221,6 +222,12 @@
                         android:layout_toRightOf="@+id/fold_text"
                         android:background="@mipmap/fold"/>
                 </RelativeLayout>
+                <View
+                    android:id="@+id/expand_line"
+                    android:background="@color/white"
+                    android:layout_width="fill_parent"
+                    android:layout_height="15dp"
+                    android:layout_below="@+id/unfold" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -358,5 +365,5 @@
             </RelativeLayout>
         </RelativeLayout>
     </RelativeLayout>
-</com.product.yuwei.bean.localbean.FadingScrollView>
+</ScrollView>
  

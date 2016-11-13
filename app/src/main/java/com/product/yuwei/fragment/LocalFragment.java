@@ -11,8 +11,6 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +19,6 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -90,9 +87,9 @@ public class LocalFragment extends Fragment implements View.OnClickListener,MyIt
         must_go_hall_listview.setAdapter(mustGoHallAadapter);
         about_visit_listview.setAdapter(aboutDelightsAdapter);
 
-        fadingScrollView=(FadingScrollView)ret.findViewById(R.id.root);
-        initActionBar();
-        setActionBarLayout(R.layout.local_top);
+//        fadingScrollView=(FadingScrollView)ret.findViewById(R.id.root);
+//        initActionBar();
+//        setActionBarLayout(R.layout.local_top);
         init(ret);
 
         init_top_data(top);
@@ -171,7 +168,7 @@ public class LocalFragment extends Fragment implements View.OnClickListener,MyIt
             actionBar.setCustomView(v,layout);
         }
     }
-
+    //初始化Actionbar
     void initActionBar(){
 
         TypedArray actionbarSizeTypedArray = getActivity().obtainStyledAttributes(new int[] { android.R.attr.actionBarSize });
@@ -203,11 +200,12 @@ public class LocalFragment extends Fragment implements View.OnClickListener,MyIt
             }
             MyLocationData locData = new MyLocationData.Builder()
                     .accuracy(location.getRadius())
-                    // 此处设置开发者获取到的方向信息，顺时针0-360
+                            // 此处设置开发者获取到的方向信息，顺时针0-360
                     .direction(100).latitude(location.getLatitude())
                     .longitude(location.getLongitude()).build();
             mBaiduMap.setMyLocationData(locData);
             city.setText(location.getCity().substring(0, 2));
+            //是否首次定位
             if (isFirstLoc) {
                 isFirstLoc = false;
                 LatLng ll = new LatLng(location.getLatitude(),
@@ -252,8 +250,8 @@ public class LocalFragment extends Fragment implements View.OnClickListener,MyIt
         mRecyclerView.setLayoutManager(new GridLayoutManager(mRecyclerView.getContext(), 2, GridLayoutManager.VERTICAL, false));
 //		mRecyclerView.setItemAnimator(new DefaultItemAnimator());
     }
+    //recyclerview中的展开点击事件
     private class MyListener implements View.OnClickListener{
-
         @Override
         public void onClick(View v) {
             if(mAdapter.getItemCount() == 2){
@@ -267,18 +265,16 @@ public class LocalFragment extends Fragment implements View.OnClickListener,MyIt
         }
     }
     private void initData(){
-        MyItemBean bean = new MyItemBean();
         this.mData = new ArrayList<MyItemBean>();
-        for(int i=0;i<6;i++) {
-            bean.tv = "wws" + i;
+        for(int i=0;i<6;i++){
+            MyItemBean bean = new MyItemBean();
+            bean.tv = "wws"+i;
             mData.add(bean);
         }
         this.mAdapter = new MyAdapter(mData);
         this.mRecyclerView.setAdapter(mAdapter);
-        //增加网格线
-//        RecyclerView.ItemDecoration decoration = new MyDecoration(getActivity());
-//        this.mRecyclerView.addItemDecoration(decoration);
-        //设置点击与长按事件
+//		RecyclerView.ItemDecoration decoration = new MyDecoration(this);
+//		this.mRecyclerView.addItemDecoration(decoration);
         this.mAdapter.setOnItemClickListener(this);
         this.mAdapter.setOnItemLongClickListener(this);
     }
