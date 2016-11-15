@@ -2,24 +2,58 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="1">
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-
-        android:background="#eeeeee">
-
-        <android.support.v4.view.ViewPager
+        android:layout_height="match_parent"
+        android:background="#eeeeee"
+        android:weightSum="1">
+        <LinearLayout
+            android:background="#FFFFFF"
             android:layout_width="match_parent"
-            android:id="@+id/id_recommend_vp"
-            android:background="#ffffff"
-            android:layout_marginTop="15dp"
+            android:gravity="center"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:paddingBottom="15dp"
-            android:layout_height="match_parent">
+            android:layout_marginTop="15dp"
+            android:layout_height="37dp">
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_margin="20dp"
+                android:background="@color/text_color_huangse_ff8800"
+                android:layout_height="1dp"
+                android:id="@+id/view">
+            </View>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:textColor="@color/text_color_huangse_ff8800"
+                android:text="老饕最爱"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_margin="20dp"
+                android:background="@color/text_color_huangse_ff8800"
+                android:layout_height="1dp"
+                android:id="@+id/view2">
+            </View>
+        </LinearLayout>
+
+
+
+        <android.support.v4.view.ViewPager
+            android:layout_width="wrap_content"
+            android:id="@+id/id_recommend_vp"
+            android:background="#ffffff"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_height="380dp"
+            android:layout_weight="0.41">
             <GridView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -28,8 +62,32 @@
                 android:background="#ffffff"
                 >
             </GridView>
-
         </android.support.v4.view.ViewPager>
+        <LinearLayout
+            android:background="#FFFFFF"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_height="50dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:background="@drawable/recom_grid_tv"
+                android:text="查看全球263个目的地"
+                android:textColor="@color/text_color_huangse_ff8800"
+                android:textSize="10sp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_marginBottom="10dp"
+
+                />
+        </LinearLayout>
+
 
 
     </LinearLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="110dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.26"
+        android:layout_margin="10dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="113dp"
+            android:layout_weight="0.15"
+            android:id="@+id/grid_item_iv" />
+
+        <TextView
+            android:text="潮州"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:id="@+id/grid_item_title"
+            android:layout_weight="0.47" />
+
+        <TextView
+            android:text="千年饮食文化，地道潮州味道"
+            android:textSize="13sp"
+            android:maxLines="2"
+            android:lines="2"
+            android:ellipsize="end"
+            android:gravity="left"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:id="@+id/grid_item_detail"
+            android:layout_weight="0.52" />
+    </LinearLayout>
+</LinearLayout>
