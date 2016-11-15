@@ -8,7 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.product.yuwei.R;
+import com.product.yuwei.bean.localbean.AboutVisitBean;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,31 +21,28 @@ import java.util.Map;
  * Created by Administrator on 2016/11/5 0005.
  */
 public class AboutDelightsAdapter extends BaseAdapter {
-    private List<Map<String, Object>> data = getData();
+    private Context context;
+
+    private List<AboutVisitBean> list;
     private LayoutInflater mInflater = null;
-    private List<Map<String, Object>> getData()
+
+    public AboutDelightsAdapter(Context context,List<AboutVisitBean> list)
     {
-        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-        Map<String, Object> map;
-        for(int i=0;i<3;i++)
-        {
-            map = new HashMap<String, Object>();
-            map.put("img", R.drawable.ic_launcher);
-            map.put("title", "必去餐厅");
-            list.add(map);
-        }
-        return list;
-    }
-    public AboutDelightsAdapter(Context context)
-    {
+        this.context = context;
         //根据context上下文加载布局，这里的是Demo17Activity本身，即this
         this.mInflater = LayoutInflater.from(context);
+        this.list = list;
+
     }
     @Override
     public int getCount() {
         //How many items are in the data set represented by this Adapter.
         //在此适配器中所代表的数据集中的条目数
-        return data.size();
+        int count = 0;
+        if(list !=null){
+            count = list.size();
+        }
+        return count;
     }
     @Override
     public Object getItem(int position) {
@@ -87,12 +86,21 @@ public class AboutDelightsAdapter extends BaseAdapter {
         {
             holder = (ViewHolder)convertView.getTag();
         }
-        holder.img1.setBackgroundResource((Integer)data.get(position).get("img"));
-        holder.img2.setBackgroundResource((Integer)data.get(position).get("img"));
-        holder.title1.setText((String) data.get(position).get("title"));
-        holder.title2.setText((String)data.get(position).get("title"));
-        holder.title3.setText((String)data.get(position).get("title"));
-        holder.title4.setText((String)data.get(position).get("title"));
+
+        AboutVisitBean aboutVisitBean = list.get(position);
+        String name = aboutVisitBean.getName();
+        String time = aboutVisitBean.getTime();
+        String uname = aboutVisitBean.getUname();
+//        holder.title1.setText(name);
+        holder.title2.setText(name);
+        holder.title3.setText(time);
+        holder.title4.setText(uname);
+
+        Glide
+                .with(context)
+                .load(aboutVisitBean.getCover())
+                .centerCrop()
+                .into(holder.img1);
         return convertView;
     }
 }

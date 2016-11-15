@@ -11,6 +11,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,7 @@ import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
 import com.product.yuwei.R;
+import com.product.yuwei.YuweiApplication;
 import com.product.yuwei.activity.local.CityIntroductionActivity;
 import com.product.yuwei.activity.local.CityListActivity;
 import com.product.yuwei.activity.local.LocalSearchActivity;
@@ -37,12 +39,23 @@ import com.product.yuwei.adapter.localadapter.AboutDelightsAdapter;
 import com.product.yuwei.adapter.localadapter.ListViewAdapter;
 import com.product.yuwei.adapter.localadapter.MustGoHallAadapter;
 import com.product.yuwei.adapter.localadapter.MyAdapter;
+import com.product.yuwei.bean.localbean.AboutVisitBean;
+import com.product.yuwei.bean.localbean.LocalDataBean;
+import com.product.yuwei.bean.localbean.LocalDataBean1;
+import com.product.yuwei.bean.localbean.MustEatBean;
+import com.product.yuwei.net.JsonTool;
 import com.product.yuwei.view.localview.FadingScrollView;
 import com.product.yuwei.bean.localbean.MyItemBean;
 import com.product.yuwei.view.localview.MyItemClickListener;
 import com.product.yuwei.view.localview.MyItemLongClickListener;
 
 
+import org.json.JSONException;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,51 +65,66 @@ import java.util.List;
 public class LocalFragment extends Fragment implements View.OnClickListener,MyItemClickListener,MyItemLongClickListener {
     private ActionBar actionBar;
     private FadingScrollView fadingScrollView;
-    private TextView city,search;
+    private TextView city,search,fold_text;
     private ImageView city_list;
     private RelativeLayout search_layout;
     private ListView rest_listview,must_go_hall_listview,about_visit_listview;
     // 定位相关
-    LocationClient mLocClient;
+    private LocationClient mLocClient;
     public MyLocationListenner myListener = new MyLocationListenner();
-    MapView mMapView;
-    BaiduMap mBaiduMap;
+    private MapView mMapView;
+    private BaiduMap mBaiduMap;
     // UI相关
     boolean isFirstLoc = true; // 是否首次定位
 
-    RecyclerView mRecyclerView;
+    private RecyclerView mRecyclerView;
     private RelativeLayout unfold;
     private List<MyItemBean> mData;
-    MyAdapter mAdapter;
+    private MyAdapter mAdapter;
+
+    private List<LocalDataBean1> list;
+    private List<AboutVisitBean> aboutVisitList;
+    private List<MustEatBean> mustEatBeanList;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 //        ((AppCompatActivity)getActivity()).supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
 
         View ret = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_local,container,false);
-        View top = LayoutInflater.from(getActivity()).inflate(R.layout.local_top,container,false);
         //设置listview适配器
-        ListViewAdapter listViewAdapter = new ListViewAdapter(getActivity());
-        MustGoHallAadapter mustGoHallAadapter = new MustGoHallAadapter(getActivity());
-        AboutDelightsAdapter aboutDelightsAdapter = new AboutDelightsAdapter(getActivity());
-        rest_listview = (ListView)ret.findViewById(R.id.rest_listview);
-        must_go_hall_listview = (ListView)ret.findViewById(R.id.must_go_hall_listview);
-        about_visit_listview = (ListView)ret.findViewById(R.id.about_visit_listview);
-
-        rest_listview.setAdapter(listViewAdapter);
-        must_go_hall_listview.setAdapter(mustGoHallAadapter);
-        about_visit_listview.setAdapter(aboutDelightsAdapter);
+        initListview(ret);
 
 //        fadingScrollView=(FadingScrollView)ret.findViewById(R.id.root);
 //        initActionBar();
 //        setActionBarLayout(R.layout.local_top);
         init(ret);
 
-        init_top_data(top);
         initView(ret);
+        //初始化数据
         initData();
+
+        Log.i("wwi", "1111");
+//        Log.i("wwi", YuweiApplication.attLocalList.toString());
+        Log.i("wwi", YuweiApplication.attAboutVisitList.toString());
+        Log.i("wwi", "2222");
         return ret;
 
+    }
+    private void initListview(View view) {
+        list = YuweiApplication.attLocalList;
+        aboutVisitList = YuweiApplication.attAboutVisitList;
+        //获取
+        rest_listview = (ListView)view.findViewById(R.id.rest_listview);
+        must_go_hall_listview = (ListView)view.findViewById(R.id.must_go_hall_listview);
+        about_visit_listview = (ListView)view.findViewById(R.id.about_visit_listview);
+        //初始化适配器
+        ListViewAdapter listViewAdapter = new ListViewAdapter(getActivity(),list);
+        MustGoHallAadapter mustGoHallAadapter = new MustGoHallAadapter(getActivity(),list);
+        AboutDelightsAdapter aboutDelightsAdapter = new AboutDelightsAdapter(getActivity(),aboutVisitList);
+        //将适配器添加进去
+        rest_listview.setAdapter(listViewAdapter);
+        must_go_hall_listview.setAdapter(mustGoHallAadapter);
+        about_visit_listview.setAdapter(aboutDelightsAdapter);
     }
 
     private void init_top_data(View v) {
@@ -110,7 +138,6 @@ public class LocalFragment extends Fragment implements View.OnClickListener,MyIt
     }
 
     public void init(View v){
-
         // 地图初始化
         mMapView = (MapView)v. findViewById(R.id.bmapView);
         mBaiduMap = mMapView.getMap();
@@ -133,20 +160,20 @@ public class LocalFragment extends Fragment implements View.OnClickListener,MyIt
     }
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.search_layout:
-                Intent intent = new Intent();
-                intent.setClass(getActivity(),LocalSearchActivity.class);
-                startActivity(intent);
-            case R.id.city:
-                Intent intent_city = new Intent();
-                intent_city.setClass(getActivity(), CityListActivity.class);
-                startActivity(intent_city);
-            case R.id.city_list:
-                Intent intent_cityChoose = new Intent();
-                intent_cityChoose.setClass(getActivity(), CityIntroductionActivity.class);
-                startActivity(intent_cityChoose);
-        }
+//        switch (v.getId()){
+//            case R.id.search_layout:
+//                Intent intent = new Intent();
+//                intent.setClass(getActivity(),LocalSearchActivity.class);
+//                startActivity(intent);
+//            case R.id.city:
+//                Intent intent_city = new Intent();
+//                intent_city.setClass(getActivity(), CityListActivity.class);
+//                startActivity(intent_city);
+//            case R.id.city_list:
+//                Intent intent_cityChoose = new Intent();
+//                intent_cityChoose.setClass(getActivity(), CityIntroductionActivity.class);
+//                startActivity(intent_cityChoose);
+//        }
     }
 
 
@@ -159,7 +186,6 @@ public class LocalFragment extends Fragment implements View.OnClickListener,MyIt
             actionBar.setDisplayShowHomeEnabled(false);
             actionBar.setDisplayShowCustomEnabled(true);
             actionBar.setDisplayShowTitleEnabled(false);
-
 
             LayoutInflater inflater = (LayoutInflater)getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View v = inflater.inflate(layoutId, null);
@@ -219,6 +245,70 @@ public class LocalFragment extends Fragment implements View.OnClickListener,MyIt
 
     }
 
+
+
+
+    private void initView(View v){
+        mRecyclerView = (RecyclerView)v.findViewById(R.id.recyclerView);
+        unfold = (RelativeLayout)v.findViewById(R.id.unfold);
+        fold_text = (TextView) v.findViewById(R.id.fold_text);
+        fold_text.setText("展开全部"+YuweiApplication.sum+"道特色菜");
+        unfold.setOnClickListener(new MyListener());
+        mRecyclerView.setLayoutManager(new GridLayoutManager(mRecyclerView.getContext(), 2, GridLayoutManager.VERTICAL, false));
+//		mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+    }
+    //recyclerview中的展开点击事件
+    private class MyListener implements View.OnClickListener{
+        @Override
+        public void onClick(View v) {
+            if(mAdapter.getItemCount() == 2){
+                mAdapter.addItemNum(mustEatBeanList.size());
+                mAdapter.notifyDataSetChanged();
+            }else {
+                mAdapter.addItemNum(2);
+                mAdapter.notifyDataSetChanged();
+            }
+
+        }
+    }
+    private void initData(){
+        mustEatBeanList = YuweiApplication.attrMustEatList;
+//        this.mData = new ArrayList<MyItemBean>();
+//        for(int i=0;i<6;i++){
+//            MyItemBean bean = new MyItemBean();
+//            bean.tv = "wws"+i;
+//            mData.add(bean);
+//        }
+        this.mAdapter = new MyAdapter(getActivity(),mustEatBeanList);
+        this.mRecyclerView.setAdapter(mAdapter);
+//		RecyclerView.ItemDecoration decoration = new MyDecoration(this);
+//		this.mRecyclerView.addItemDecoration(decoration);
+        this.mAdapter.setOnItemClickListener(this);
+        this.mAdapter.setOnItemLongClickListener(this);
+    }
+
+    /**
+     * Item click
+     */
+    @Override
+    public void onItemClick(View view, int postion) {
+        MustEatBean mustEatBean = mustEatBeanList.get(postion);
+//        MyItemBean bean = mData.get(postion);
+        if(mustEatBean != null){
+            Toast.makeText(getActivity(), mustEatBean.getName(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onItemLongClick(View view, int postion) {
+//        MyItemBean bean = mData.get(postion);
+        MustEatBean mustEatBean = mustEatBeanList.get(postion);
+        if(mustEatBean != null){
+            Toast.makeText(getActivity(), "LongClick "+mustEatBean.getName(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
     @Override
     public void onPause() {
         mMapView.onPause();
@@ -239,63 +329,6 @@ public class LocalFragment extends Fragment implements View.OnClickListener,MyIt
         mMapView.onDestroy();
         mMapView = null;
         super.onDestroy();
-    }
-
-
-
-    private void initView(View v){
-        mRecyclerView = (RecyclerView)v.findViewById(R.id.recyclerView);
-        unfold = (RelativeLayout)v.findViewById(R.id.unfold);
-        unfold.setOnClickListener(new MyListener());
-        mRecyclerView.setLayoutManager(new GridLayoutManager(mRecyclerView.getContext(), 2, GridLayoutManager.VERTICAL, false));
-//		mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-    }
-    //recyclerview中的展开点击事件
-    private class MyListener implements View.OnClickListener{
-        @Override
-        public void onClick(View v) {
-            if(mAdapter.getItemCount() == 2){
-                mAdapter.addItemNum(mData.size());
-                mAdapter.notifyDataSetChanged();
-            }else {
-                mAdapter.addItemNum(2);
-                mAdapter.notifyDataSetChanged();
-            }
-
-        }
-    }
-    private void initData(){
-        this.mData = new ArrayList<MyItemBean>();
-        for(int i=0;i<6;i++){
-            MyItemBean bean = new MyItemBean();
-            bean.tv = "wws"+i;
-            mData.add(bean);
-        }
-        this.mAdapter = new MyAdapter(mData);
-        this.mRecyclerView.setAdapter(mAdapter);
-//		RecyclerView.ItemDecoration decoration = new MyDecoration(this);
-//		this.mRecyclerView.addItemDecoration(decoration);
-        this.mAdapter.setOnItemClickListener(this);
-        this.mAdapter.setOnItemLongClickListener(this);
-    }
-
-    /**
-     * Item click
-     */
-    @Override
-    public void onItemClick(View view, int postion) {
-        MyItemBean bean = mData.get(postion);
-        if(bean != null){
-            Toast.makeText(getActivity(), bean.tv, Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    @Override
-    public void onItemLongClick(View view, int postion) {
-        MyItemBean bean = mData.get(postion);
-        if(bean != null){
-            Toast.makeText(getActivity(), "LongClick "+bean.tv, Toast.LENGTH_SHORT).show();
-        }
     }
 
 }

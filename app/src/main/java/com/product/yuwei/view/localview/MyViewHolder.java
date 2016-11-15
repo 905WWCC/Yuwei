@@ -13,15 +13,16 @@ import com.product.yuwei.R;
 public class MyViewHolder extends ViewHolder implements OnClickListener,OnLongClickListener{
 
 	public ImageView iv;
-	public TextView tv;
+	public TextView tv,tv1;
 	private MyItemClickListener mListener;
 	private MyItemLongClickListener mLongClickListener;
 	
 	public MyViewHolder(View arg0,MyItemClickListener listener,MyItemLongClickListener longClickListener) {
 		super(arg0);
 
-		iv = (ImageView)arg0.findViewById(R.id.item_iv);
-		tv = (TextView)arg0.findViewById(R.id.item_tv);
+		iv = (ImageView)arg0.findViewById(R.id.cover);
+		tv = (TextView)arg0.findViewById(R.id.name);
+		tv1 = (TextView)arg0.findViewById(R.id.sum);
 		this.mListener = listener;
 		this.mLongClickListener = longClickListener;
 		arg0.setOnClickListener(this);

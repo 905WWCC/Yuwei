@@ -12,22 +12,25 @@
         android:orientation="vertical" >
 
         <ImageView
-            android:id="@+id/item_iv"
+            android:id="@+id/cover"
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:scaleType="center"
             android:background="@mipmap/img" />
         <TextView
-            android:id="@+id/item_tv"
+            android:id="@+id/name"
             android:layout_marginTop="6dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="抱罗粉"/>
         <TextView
+            android:id="@+id/sum"
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:singleLine="false"
+            android:textSize="12sp"
+            android:textColor="#ffc5c5c5"
             android:maxEms="10"
             android:text="透明的精致米粉,配料丰富惹人爱。"/>
     </LinearLayout>

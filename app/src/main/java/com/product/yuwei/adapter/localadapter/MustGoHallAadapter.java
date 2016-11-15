@@ -8,7 +8,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.product.yuwei.R;
+import com.product.yuwei.bean.localbean.LocalDataBean;
+import com.product.yuwei.bean.localbean.LocalDataBean1;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,31 +22,26 @@ import java.util.Map;
  * Created by Administrator on 2016/11/4 0004.
  */
 public class MustGoHallAadapter extends BaseAdapter {
-    private List<Map<String, Object>> data = getData();
+//    private List<Map<String, Object>> data = getData();
     private LayoutInflater mInflater = null;
-    private List<Map<String, Object>> getData()
-    {
-        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-        Map<String, Object> map;
-        for(int i=0;i<3;i++)
-        {
-            map = new HashMap<String, Object>();
-            map.put("img", R.drawable.ic_launcher);
-            map.put("title", "必去餐厅");
-            list.add(map);
-        }
-        return list;
-    }
-    public MustGoHallAadapter(Context context)
+    private List<LocalDataBean1> list;
+    private Context context;
+    public MustGoHallAadapter(Context context,List<LocalDataBean1> list)
     {
         //根据context上下文加载布局，这里的是Demo17Activity本身，即this
+        this.context = context;
         this.mInflater = LayoutInflater.from(context);
+        this.list = list;
     }
     @Override
     public int getCount() {
         //How many items are in the data set represented by this Adapter.
         //在此适配器中所代表的数据集中的条目数
-        return data.size();
+        int count = 0;
+        if(list !=null){
+            count = list.size();
+        }
+        return count;
     }
     @Override
     public Object getItem(int position) {
@@ -63,7 +61,6 @@ public class MustGoHallAadapter extends BaseAdapter {
         public TextView title1,title2,title3;
     }
 
-    //Get a View that displays the data at the specified position in the data set.
     //获取一个在数据集中指定索引的视图来显示数据
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -85,10 +82,21 @@ public class MustGoHallAadapter extends BaseAdapter {
         {
             holder = (ViewHolder)convertView.getTag();
         }
-        holder.img1.setBackgroundResource((Integer)data.get(position).get("img"));
-        holder.title1.setText((String)data.get(position).get("title"));
-        holder.title2.setText((String)data.get(position).get("title"));
-        holder.title3.setText((String)data.get(position).get("title"));
+
+        LocalDataBean1 localDataBean = list.get(position);
+        String name = localDataBean.getName();
+        String summary = localDataBean.getSummary();
+        int cost = localDataBean.getCost();
+
+        holder.title1.setText(name);
+        holder.title2.setText(cost+"元/人");
+        holder.title3.setText(summary);
+
+        Glide
+            .with(context)
+            .load(localDataBean.getCover())
+            .centerCrop()
+            .into(holder.img1);
         return convertView;
     }
 }
