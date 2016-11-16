@@ -12,7 +12,9 @@ import com.bumptech.glide.Glide;
 import com.product.yuwei.R;
 import com.product.yuwei.bean.localbean.AboutVisitBean;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -90,10 +92,13 @@ public class AboutDelightsAdapter extends BaseAdapter {
         AboutVisitBean aboutVisitBean = list.get(position);
         String name = aboutVisitBean.getName();
         String time = aboutVisitBean.getTime();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
+        String time1 = dateFormat.format(new Date(Long.parseLong(time) * 1000));
+
         String uname = aboutVisitBean.getUname();
 //        holder.title1.setText(name);
         holder.title2.setText(name);
-        holder.title3.setText(time);
+        holder.title3.setText(time1);
         holder.title4.setText(uname);
 
         Glide
@@ -101,6 +106,13 @@ public class AboutDelightsAdapter extends BaseAdapter {
                 .load(aboutVisitBean.getCover())
                 .centerCrop()
                 .into(holder.img1);
+         Glide
+                .with(context)
+                .load(aboutVisitBean.getHeader())
+                .centerCrop()
+                .into(holder.img2);
+
+
         return convertView;
     }
 }

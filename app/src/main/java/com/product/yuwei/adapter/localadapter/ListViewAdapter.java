@@ -107,9 +107,7 @@ public class ListViewAdapter extends BaseAdapter {
         int cost = localDataBean1.getCost();
         String type = localDataBean1.getType();
 
-        for (int i = 0; i < img.length; i++){
-            holder.img2.setImageResource(img[i]);
-        }
+        holder.img2.setImageResource(img[position]);
         holder.title1.setText("11979.14Km");
         holder.title2.setText(name);
         holder.title3.setText(cost+"元/人");

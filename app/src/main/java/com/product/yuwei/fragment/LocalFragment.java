@@ -65,9 +65,9 @@ import java.util.List;
 public class LocalFragment extends Fragment implements View.OnClickListener,MyItemClickListener,MyItemLongClickListener {
     private ActionBar actionBar;
     private FadingScrollView fadingScrollView;
-    private TextView city,search,fold_text;
+    private TextView city,search,fold_text,look_all;
     private ImageView city_list;
-    private RelativeLayout search_layout;
+    private RelativeLayout search_layout,scan_all;
     private ListView rest_listview,must_go_hall_listview,about_visit_listview;
     // 定位相关
     private LocationClient mLocClient;
@@ -251,8 +251,12 @@ public class LocalFragment extends Fragment implements View.OnClickListener,MyIt
     private void initView(View v){
         mRecyclerView = (RecyclerView)v.findViewById(R.id.recyclerView);
         unfold = (RelativeLayout)v.findViewById(R.id.unfold);
+        scan_all = (RelativeLayout) v.findViewById(R.id.scan_all);
+        scan_all.setOnClickListener(this);
+        look_all = (TextView) v.findViewById(R.id.look_all);
+        look_all.setText("查看全部"+YuweiApplication.sum_hall+"家餐厅");
         fold_text = (TextView) v.findViewById(R.id.fold_text);
-        fold_text.setText("展开全部"+YuweiApplication.sum+"道特色菜");
+        fold_text.setText("展开全部"+YuweiApplication.sum_food+"道特色菜");
         unfold.setOnClickListener(new MyListener());
         mRecyclerView.setLayoutManager(new GridLayoutManager(mRecyclerView.getContext(), 2, GridLayoutManager.VERTICAL, false));
 //		mRecyclerView.setItemAnimator(new DefaultItemAnimator());

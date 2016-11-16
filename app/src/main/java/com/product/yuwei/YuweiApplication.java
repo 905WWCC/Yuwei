@@ -31,7 +31,8 @@ public class YuweiApplication extends Application {
     public static List<AboutVisitBean> attAboutVisitList = new ArrayList<>();
     public static List<MustEatBean> attrMustEatList = new ArrayList<>();
     public static String local_text;
-    public static int sum;
+    public static int sum_food;
+    public static int sum_hall;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -69,7 +70,7 @@ public class YuweiApplication extends Application {
 
                 if(!local_jsobject2.isNull("content")){
                     JSONArray content = local_jsobject2.getJSONArray("content");
-                    sum = content.length();
+                    sum_food = content.length();
                     for (int i = 0; i < content.length(); i++){
                         JSONObject jo = content.getJSONObject(i);
                         MustEatBean mustEatBean = new MustEatBean(jo);
@@ -79,6 +80,7 @@ public class YuweiApplication extends Application {
 
                 if(!local_jsobject3.isNull("content")){
                     JSONArray content = local_jsobject3.getJSONArray("content");
+                    sum_hall = content.length();
                     for (int i = 0; i < content.length(); i++){
                         JSONObject jo = content.getJSONObject(i);
                         LocalDataBean1 localDataBean1 = new LocalDataBean1(jo);

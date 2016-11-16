@@ -12,6 +12,7 @@ public class AboutVisitBean {
     String cover;
     String time;
     String uname;
+    String header;
 
     public AboutVisitBean(JSONObject jsonObject) {
         try {
@@ -30,6 +31,7 @@ public class AboutVisitBean {
                 JSONObject author = jsonObject.getJSONObject("author");
 
                 this.uname = author.getString("uname");
+                this.header = author.getString("header");
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -68,6 +70,13 @@ public class AboutVisitBean {
         this.uname = uname;
     }
 
+    public String getHeader() {
+        return header;
+    }
+
+    public void setHeader(String header) {
+        this.header = header;
+    }
     @Override
     public String toString() {
         return "AboutVisitBean{" +
