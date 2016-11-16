@@ -5,8 +5,8 @@ import android.app.Application;
 import com.baidu.mapapi.SDKInitializer;
 import com.product.yuwei.bean.HotBase;
 import com.product.yuwei.bean.localbean.AboutVisitBean;
-import com.product.yuwei.bean.localbean.LocalDataBean;
 import com.product.yuwei.bean.localbean.LocalDataBean1;
+import com.product.yuwei.bean.localbean.MapNearbyBean;
 import com.product.yuwei.bean.localbean.MustEatBean;
 
 import org.json.JSONArray;
@@ -30,6 +30,7 @@ public class YuweiApplication extends Application {
     public static List<LocalDataBean1> attLocalList = new ArrayList<>();
     public static List<AboutVisitBean> attAboutVisitList = new ArrayList<>();
     public static List<MustEatBean> attrMustEatList = new ArrayList<>();
+    public static List<MapNearbyBean> attrMapNearbyList = new ArrayList<>();
     public static String local_text;
     public static int sum_food;
     public static int sum_hall;
@@ -61,13 +62,20 @@ public class YuweiApplication extends Application {
             JSONObject local_jsonObject = new JSONObject(local_text);
             JSONObject local_data = local_jsonObject.getJSONObject("data");
             JSONArray local_dataList = local_data.getJSONArray("list");
-//            for (int j = 0; j < local_dataList.length(); j++) {
                 JSONObject local_jsobject0 = local_dataList.getJSONObject(0);
                 JSONObject local_jsobject1 = local_dataList.getJSONObject(1);
-                JSONObject local_jsobject2 = local_dataList.getJSONObject(2);
-                JSONObject local_jsobject3 = local_dataList.getJSONObject(3);
-                JSONObject local_jsobject4 = local_dataList.getJSONObject(4);
+                JSONObject local_jsobject2 = local_dataList.getJSONObject(3);
+                JSONObject local_jsobject3 = local_dataList.getJSONObject(4);
+                JSONObject local_jsobject4 = local_dataList.getJSONObject(5);
 
+            if(!local_jsobject1.isNull("content")){
+                JSONArray content = local_jsobject1.getJSONArray("content");
+                for (int i = 0; i < content.length(); i++){
+                    JSONObject jo = content.getJSONObject(i);
+                    MapNearbyBean mapNearbyBean = new MapNearbyBean(jo);
+                    attrMapNearbyList.add(mapNearbyBean);
+                }
+            }
                 if(!local_jsobject2.isNull("content")){
                     JSONArray content = local_jsobject2.getJSONArray("content");
                     sum_food = content.length();

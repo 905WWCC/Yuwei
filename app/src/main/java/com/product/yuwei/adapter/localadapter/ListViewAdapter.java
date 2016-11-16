@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 import com.product.yuwei.R;
 import com.product.yuwei.bean.localbean.LocalDataBean;
 import com.product.yuwei.bean.localbean.LocalDataBean1;
+import com.product.yuwei.bean.localbean.MapNearbyBean;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,7 +25,7 @@ import java.util.Map;
 public class ListViewAdapter extends BaseAdapter {
 //    private List<Map<String, Object>> data = getData();
     private LayoutInflater mInflater = null;
-    private List<LocalDataBean1> list;
+    private List<MapNearbyBean> list;
     private Context context;
 //    private List<Map<String, Object>> getData()
 //    {
@@ -39,7 +40,7 @@ public class ListViewAdapter extends BaseAdapter {
 //        }
 //        return list;
 //    }
-    public ListViewAdapter(Context context,List<LocalDataBean1> list)
+    public ListViewAdapter(Context context,List<MapNearbyBean> list)
     {
         this.list = list;
         this.context = context;
@@ -102,20 +103,22 @@ public class ListViewAdapter extends BaseAdapter {
                 R.mipmap.citymap_3
         };
 
-        LocalDataBean1 localDataBean1 = list.get(position);
-        String name = localDataBean1.getName();
-        int cost = localDataBean1.getCost();
-        String type = localDataBean1.getType();
+        MapNearbyBean mapNearbyBean = list.get(position);
+        String id = mapNearbyBean.getId();
+        String name = mapNearbyBean.getName();
+        String km = mapNearbyBean.getKm();
+        int cost = mapNearbyBean.getCost();
+        String type = mapNearbyBean.getType();
 
         holder.img2.setImageResource(img[position]);
-        holder.title1.setText("11979.14Km");
+        holder.title1.setText(km);
         holder.title2.setText(name);
         holder.title3.setText(cost+"元/人");
         holder.title4.setText(type);
 
         Glide
                 .with(context)
-                .load(localDataBean1.getCover())
+                .load(mapNearbyBean.getCover())
                 .centerCrop()
                 .into(holder.img1);
 

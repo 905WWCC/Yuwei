@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -35,6 +36,7 @@ import com.product.yuwei.YuweiApplication;
 import com.product.yuwei.activity.local.CityIntroductionActivity;
 import com.product.yuwei.activity.local.CityListActivity;
 import com.product.yuwei.activity.local.LocalSearchActivity;
+import com.product.yuwei.activity.local.MapNearbyActivity;
 import com.product.yuwei.adapter.localadapter.AboutDelightsAdapter;
 import com.product.yuwei.adapter.localadapter.ListViewAdapter;
 import com.product.yuwei.adapter.localadapter.MustGoHallAadapter;
@@ -42,6 +44,7 @@ import com.product.yuwei.adapter.localadapter.MyAdapter;
 import com.product.yuwei.bean.localbean.AboutVisitBean;
 import com.product.yuwei.bean.localbean.LocalDataBean;
 import com.product.yuwei.bean.localbean.LocalDataBean1;
+import com.product.yuwei.bean.localbean.MapNearbyBean;
 import com.product.yuwei.bean.localbean.MustEatBean;
 import com.product.yuwei.net.JsonTool;
 import com.product.yuwei.view.localview.FadingScrollView;
@@ -63,8 +66,6 @@ import java.util.List;
  * Created by teng on 10/14/16.
  */
 public class LocalFragment extends Fragment implements View.OnClickListener,MyItemClickListener,MyItemLongClickListener {
-    private ActionBar actionBar;
-    private FadingScrollView fadingScrollView;
     private TextView city,search,fold_text,look_all;
     private ImageView city_list;
     private RelativeLayout search_layout,scan_all;
@@ -82,6 +83,7 @@ public class LocalFragment extends Fragment implements View.OnClickListener,MyIt
     private List<MyItemBean> mData;
     private MyAdapter mAdapter;
 
+    private List<MapNearbyBean> mapNearbyBeanList;
     private List<LocalDataBean1> list;
     private List<AboutVisitBean> aboutVisitList;
     private List<MustEatBean> mustEatBeanList;
@@ -89,36 +91,31 @@ public class LocalFragment extends Fragment implements View.OnClickListener,MyIt
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 //        ((AppCompatActivity)getActivity()).supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
-
+        //获取文本布局
         View ret = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_local,container,false);
         //设置listview适配器
         initListview(ret);
-
-//        fadingScrollView=(FadingScrollView)ret.findViewById(R.id.root);
-//        initActionBar();
-//        setActionBarLayout(R.layout.local_top);
-        init(ret);
-
+        initMap(ret);
         initView(ret);
         //初始化数据
         initData();
 
-        Log.i("wwi", "1111");
-//        Log.i("wwi", YuweiApplication.attLocalList.toString());
         Log.i("wwi", YuweiApplication.attAboutVisitList.toString());
-        Log.i("wwi", "2222");
         return ret;
 
     }
     private void initListview(View view) {
         list = YuweiApplication.attLocalList;
+        mapNearbyBeanList = YuweiApplication.attrMapNearbyList;
         aboutVisitList = YuweiApplication.attAboutVisitList;
+
         //获取
         rest_listview = (ListView)view.findViewById(R.id.rest_listview);
+        rest_listview.setOnItemClickListener(new RestItemClick());
         must_go_hall_listview = (ListView)view.findViewById(R.id.must_go_hall_listview);
         about_visit_listview = (ListView)view.findViewById(R.id.about_visit_listview);
         //初始化适配器
-        ListViewAdapter listViewAdapter = new ListViewAdapter(getActivity(),list);
+        ListViewAdapter listViewAdapter = new ListViewAdapter(getActivity(),mapNearbyBeanList);
         MustGoHallAadapter mustGoHallAadapter = new MustGoHallAadapter(getActivity(),list);
         AboutDelightsAdapter aboutDelightsAdapter = new AboutDelightsAdapter(getActivity(),aboutVisitList);
         //将适配器添加进去
@@ -137,9 +134,9 @@ public class LocalFragment extends Fragment implements View.OnClickListener,MyIt
         city_list.setOnClickListener(this);
     }
 
-    public void init(View v){
+    public void initMap(View v){
         // 地图初始化
-        mMapView = (MapView)v. findViewById(R.id.bmapView);
+        mMapView = (MapView)v.findViewById(R.id.bmapView);
         mBaiduMap = mMapView.getMap();
         // 开启定位图层
         mBaiduMap.setMyLocationEnabled(true);
@@ -176,44 +173,6 @@ public class LocalFragment extends Fragment implements View.OnClickListener,MyIt
 //        }
     }
 
-
-
-    public void setActionBarLayout(int layoutId ){
-
-        if( actionBar != null){
-
-            actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-            actionBar.setDisplayShowHomeEnabled(false);
-            actionBar.setDisplayShowCustomEnabled(true);
-            actionBar.setDisplayShowTitleEnabled(false);
-
-            LayoutInflater inflater = (LayoutInflater)getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View v = inflater.inflate(layoutId, null);
-            ActionBar.LayoutParams layout = new  ActionBar.LayoutParams(android.app.ActionBar.LayoutParams.MATCH_PARENT,
-                    android.app.ActionBar.LayoutParams.MATCH_PARENT);
-            actionBar.setCustomView(v,layout);
-        }
-    }
-    //初始化Actionbar
-    void initActionBar(){
-
-        TypedArray actionbarSizeTypedArray = getActivity().obtainStyledAttributes(new int[] { android.R.attr.actionBarSize });
-        float height = actionbarSizeTypedArray.getDimension(0, 0);
-        fadingScrollView.setFadingOffset((int) height);
-
-        actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
-
-        ColorDrawable bgDrawable=new ColorDrawable(getResources().getColor(R.color.transparent));
-        fadingScrollView.bindingActionBar(actionBar);
-        try {
-            fadingScrollView.setActionBarBgDrawable(bgDrawable);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-
-
     /**
      * 定位SDK监听函数
      */
@@ -230,16 +189,16 @@ public class LocalFragment extends Fragment implements View.OnClickListener,MyIt
                     .direction(100).latitude(location.getLatitude())
                     .longitude(location.getLongitude()).build();
             mBaiduMap.setMyLocationData(locData);
-            city.setText(location.getCity().substring(0, 2));
+//            city.setText(location.getCity().substring(0, 2));
             //是否首次定位
             if (isFirstLoc) {
                 isFirstLoc = false;
                 LatLng ll = new LatLng(location.getLatitude(),
                         location.getLongitude());
                 MapStatus.Builder builder = new MapStatus.Builder();
-                builder.target(ll).zoom(18.0f);
+                builder.target(ll).zoom(15.0f);
                 mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
-                city.setText(location.getCity().substring(0, 2));
+//                city.setText(location.getCity().substring(0, 2));
             }
         }
 
@@ -335,4 +294,14 @@ public class LocalFragment extends Fragment implements View.OnClickListener,MyIt
         super.onDestroy();
     }
 
+    private class RestItemClick implements android.widget.AdapterView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            MapNearbyBean mapNearbyBean = mapNearbyBeanList.get(position);
+            String rest_id = mapNearbyBean.getId();
+            Intent map_intent = new Intent(getActivity(), MapNearbyActivity.class);
+            map_intent.putExtra("id",rest_id);
+            startActivity(map_intent);
+        }
+    }
 }
