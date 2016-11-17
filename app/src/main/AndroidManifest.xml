@@ -35,7 +35,7 @@
         <activity android:name=".activity.local.CityIntroductionActivity" />
         <activity android:name=".activity.local.CityListActivity" />
         <activity android:name=".activity.local.LocalSearchActivity" />
-        <activity android:name=".activity.local.MapNearbyActivity"></activity>
+        <activity android:name=".activity.local.MapNearbyActivity"/>
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"

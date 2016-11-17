@@ -299,8 +299,28 @@ public class LocalFragment extends Fragment implements View.OnClickListener,MyIt
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             MapNearbyBean mapNearbyBean = mapNearbyBeanList.get(position);
             String rest_id = mapNearbyBean.getId();
+            String rest_name = mapNearbyBean.getName();
+            String rest_cover = mapNearbyBean.getCover();
+            int rest_cost = mapNearbyBean.getCost();
+            String rest_address = mapNearbyBean.getAddress();
+            String rest_open_time = mapNearbyBean.getOpen_time();
+            String rest_reason = mapNearbyBean.getReason();
+            String rest_desc = mapNearbyBean.getDesc();
+            String rest_phone = mapNearbyBean.getPhone();
             Intent map_intent = new Intent(getActivity(), MapNearbyActivity.class);
-            map_intent.putExtra("id",rest_id);
+
+            Bundle bundle = new Bundle();
+            bundle.putInt("rest_cost", rest_cost);
+            bundle.putString("rest_id", rest_id);
+            bundle.putString("rest_name", rest_name);
+            bundle.putString("rest_cover", rest_cover);
+            bundle.putString("rest_address", rest_address);
+            bundle.putString("rest_open_time", rest_open_time);
+            bundle.putString("rest_reason", rest_reason);
+            bundle.putString("rest_desc", rest_desc);
+            bundle.putString("rest_phone", rest_phone);
+            map_intent.putExtras(bundle);
+
             startActivity(map_intent);
         }
     }
