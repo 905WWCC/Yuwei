@@ -113,6 +113,7 @@ public class LocalFragment extends Fragment implements View.OnClickListener,MyIt
         rest_listview = (ListView)view.findViewById(R.id.rest_listview);
         rest_listview.setOnItemClickListener(new RestItemClick());
         must_go_hall_listview = (ListView)view.findViewById(R.id.must_go_hall_listview);
+        must_go_hall_listview.setOnItemClickListener(new MustGoHallItemClick());
         about_visit_listview = (ListView)view.findViewById(R.id.about_visit_listview);
         //初始化适配器
         ListViewAdapter listViewAdapter = new ListViewAdapter(getActivity(),mapNearbyBeanList);
@@ -293,7 +294,15 @@ public class LocalFragment extends Fragment implements View.OnClickListener,MyIt
         mMapView = null;
         super.onDestroy();
     }
+    private class MustGoHallItemClick implements android.widget.AdapterView.OnItemClickListener{
 
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            LocalDataBean1 localDataBean1 = list.get(position);
+            String name = localDataBean1.getName();
+            Toast.makeText(getActivity(),name,Toast.LENGTH_SHORT).show();
+        }
+    }
     private class RestItemClick implements android.widget.AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

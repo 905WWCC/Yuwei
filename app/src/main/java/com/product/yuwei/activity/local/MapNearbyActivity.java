@@ -1,20 +1,27 @@
 package com.product.yuwei.activity.local;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextThemeWrapper;
+import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.product.yuwei.R;
 
-public class MapNearbyActivity extends Activity {
-    private Context context;
+public class MapNearbyActivity extends Activity implements View.OnClickListener{
+    private RelativeLayout rest_more_layout;
     private TextView restAddress,restAddressE,zhinanTitle,zhinanText,chakan,restCost,rest_time_tv,restTele,tv1,reasonTv,search_text;
     private ImageView image;
+    private String rest_desc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,9 +40,10 @@ public class MapNearbyActivity extends Activity {
         String rest_address = intent.getString("rest_address");
         String rest_open_time = intent.getString("rest_open_time");
         String rest_reason = intent.getString("rest_reason");
-        String rest_desc = intent.getString("rest_desc");
+        rest_desc = intent.getString("rest_desc");
         String rest_phone = intent.getString("rest_phone");
-
+        rest_more_layout = (RelativeLayout) findViewById(R.id.rest_more_layout);
+        rest_more_layout.setOnClickListener(this);
         restAddress = (TextView) findViewById(R.id.restAddress);
         restAddressE = (TextView) findViewById(R.id.restAddressE);
         zhinanTitle = (TextView) findViewById(R.id.zhinanTitle);
@@ -63,5 +71,26 @@ public class MapNearbyActivity extends Activity {
                 .into(image);
 
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.rest_more_layout:
+//                Dialog alertDialog = new AlertDialog.Builder(this).
+                    AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom));
+                        builder.setIcon(R.mipmap.dish_reason).
+                        setTitle("推荐理由").
+                        setMessage(rest_desc).
+                        create();
+                        builder.show();
+//                alertDialog.getWindow().setLayout(300,200);
+//                WindowManager.LayoutParams params =
+//                        alertDialog.getWindow().getAttributes();
+//                params.width = 200;
+//                params.height = 200;
+
+
+        }
     }
 }
