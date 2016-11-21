@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.ImageView;
 
+import com.baidu.platform.comapi.map.C;
 import com.bumptech.glide.Glide;
 import com.product.yuwei.bean.homebean.RecomBaseBean;
 import com.product.yuwei.bean.homebean.RecomPageBean;
@@ -22,16 +23,19 @@ import java.util.Objects;
 
 public class SidesPageAdapter extends PagerAdapter{
 
-    private List<RecomPageBean> imageBeanList;
     private List<ImageView> imageList;
-    public SidesPageAdapter(Context context,List<RecomPageBean> imageBeanList){
-        for (int i = 0; i <imageBeanList.size() ; i++) {
-            ImageView imageView=new ImageView(context);
-            Glide.with(context).load(imageBeanList.get(i).getImg()).into(imageView);
-            imageList.add(imageView);
+    private Context context;
 
-        }
+    public void refreshData(List<ImageView> imageList){
+        this.imageList=imageList;
+        notifyDataSetChanged();
     }
+
+    public SidesPageAdapter(Context context, List<ImageView> imageList){
+        this.context=context;
+        this.imageList=imageList;
+    }
+
 
     @Override
     public int getCount() {
@@ -42,24 +46,6 @@ public class SidesPageAdapter extends PagerAdapter{
     public boolean isViewFromObject(View arg0, Object arg1) {
         return arg0==arg1;
     }
-    @Override
-    public void destroyItem(ViewGroup container, int position,Object object) {
-        //Warning：不要在这里调用removeView
-     }
-
-    /////////////////////////////////
-    public interface OnItemClickListener {
-        void onItemClick(View view, int position);
-    }
-
-    private OnItemClickListener onItemClickListener;
-
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
-        this.onItemClickListener = onItemClickListener;
-    }
-    //////////////////////////////////////////////
-
-
     @Override
     public Object instantiateItem(final ViewGroup container, int position){
         //对ViewPager页号求模取出View列表中要显示的项
@@ -90,4 +76,24 @@ public class SidesPageAdapter extends PagerAdapter{
         return view;
 
     }
+    @Override
+    public void destroyItem(ViewGroup container, int position,Object object) {
+        //Warning：不要在这里调用removeView
+        container.removeView((View) object);
+     }
+
+    /////////////////////////////////
+    public interface OnItemClickListener {
+        void onItemClick(View view, int position);
+    }
+
+    private OnItemClickListener onItemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+    //////////////////////////////////////////////
+
+
+
 }

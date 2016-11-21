@@ -1,0 +1,334 @@
+<?xml version="1" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+        <RelativeLayout
+            android:orientation="vertical"
+            android:id="@+id/flipperLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="140dp">
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignParentTop="true" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:id="@+id/flipperCursors"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_alignBottom="@+id/viewPager"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/res_addr_layout2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="56dp"
+            android:layout_below="@+id/flipperLayout">
+            <RelativeLayout
+                android:id="@+id/res_addr_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:layout_marginBottom="3dp"
+                android:layout_toLeftOf="@+id/cityIcon">
+                <RelativeLayout
+                    android:id="@+id/addressLayout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="17dp"
+                    android:layout_centerVertical="true">
+                    <TextView
+                        android:textSize="13dp"
+                        android:textColor="@color/blackFont"
+                        android:id="@+id/restAddress"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="24dp"
+                        android:text=""
+                        android:lineSpacingExtra="8dp" />
+                    <TextView
+                        android:textSize="13dp"
+                        android:textColor="@color/blackFont"
+                        android:id="@+id/restAddressE"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginRight="24dp"
+                        android:text=""
+                        android:layout_below="@+id/restAddress"
+                        android:lineSpacingExtra="8dp" />
+                </RelativeLayout>
+            </RelativeLayout>
+            <ImageView
+                android:id="@+id/cityIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="23dp"
+                android:src="@mipmap/icon_address"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/zhinanLayout"
+            android:background="#fffafafb"
+            android:visibility="gone"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/res_addr_layout2">
+            <ImageView
+                android:id="@+id/rest_divider0"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/home_divider"
+                android:scaleType="fitXY" />
+            <RelativeLayout
+                android:id="@+id/zhinanContent"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:layout_below="@+id/rest_divider0">
+                <TextView
+                    android:textSize="14dp"
+                    android:textColor="@color/blackFont"
+                    android:id="@+id/zhinanTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="17dp"
+                    android:text="预约指南"
+                    android:drawablePadding="8dp" />
+                <TextView
+                    android:textSize="13dp"
+                    android:textColor="@color/blackFont"
+                    android:autoLink="web"
+                    android:id="@+id/zhinanText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="17dp"
+                    android:layout_marginTop="13dp"
+                    android:text=""
+                    android:layout_below="@+id/zhinanTitle"
+                    android:lineSpacingExtra="14dp" />
+                <View
+                    android:id="@+id/blankView0"
+                    android:layout_width="fill_parent"
+                    android:layout_height="14dp"
+                    android:layout_below="@+id/zhinanText" />
+                <RelativeLayout
+                    android:id="@+id/emailLayout"
+                    android:visibility="gone"
+                    android:layout_width="fill_parent"
+                    android:layout_height="49dp"
+                    android:layout_below="@+id/blankView0">
+                    <View android:id="@+id/in_divider"
+                        android:background="@color/divider"
+                        android:layout_width="fill_parent"
+                        android:layout_height="1px"
+                        android:layout_marginLeft="17dp"
+                        android:layout_marginRight="17dp"
+                        android:layout_alignParentTop="true" />
+                    <TextView
+                        android:textSize="12dp"
+                        android:textColor="@color/fontColor"
+                        android:gravity="center"
+                        android:id="@+id/chakan"
+                        android:background="@mipmap/rest_email_back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="查看邮件模板"
+                        android:layout_centerInParent="true" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+        <ImageView
+            android:id="@+id/rest_divider"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/home_divider"
+            android:scaleType="fitXY"
+            android:layout_below="@+id/zhinanLayout" />
+        <RelativeLayout
+            android:id="@+id/restaurantSummary"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:layout_below="@+id/rest_divider"
+            android:layout_centerHorizontal="true">
+            <RelativeLayout
+                android:id="@+id/rest_title_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <ImageView android:id="@+id/restCostImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="17dp"
+                    android:src="@mipmap/city_cost"
+                    android:layout_centerVertical="true" />
+                <TextView
+                    android:textSize="13dp"
+                    android:textColor="@color/blackFont"
+                    android:ellipsize="end"
+                    android:id="@+id/restCost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="42dp"
+                    android:text=""
+                    android:layout_toRightOf="@+id/restCostImage"
+                    android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/res_time_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:layout_below="@+id/rest_title_layout">
+                <ImageView
+                    android:id="@+id/restTimeImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="17dp"
+                    android:src="@mipmap/icon_time" />
+                <TextView
+                    android:textSize="13dp"
+                    android:textColor="@color/blackFont"
+                    android:ellipsize="end"
+                    android:id="@+id/rest_time_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="42dp"
+                    android:text=""
+                    android:layout_toRightOf="@+id/restTimeImage"
+                    android:layout_alignTop="@+id/restTimeImage"
+                    android:lineSpacingExtra="5dp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/res_tel_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:layout_below="@+id/res_time_layout">
+                <ImageView
+                    android:id="@+id/restTeleImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="17dp"
+                    android:src="@mipmap/icon_phone"
+                    android:layout_centerVertical="true" />
+                <TextView
+                    android:textSize="13dp"
+                    android:textColor="@color/blackFont"
+                    android:textColorLink="@color/blackFont"
+                    android:ellipsize="end"
+                    android:autoLink="phone"
+                    android:id="@+id/restTele"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="42dp"
+                    android:text=""
+                    android:layout_toRightOf="@+id/restTeleImage" />
+            </RelativeLayout>
+        </RelativeLayout>
+        <ImageView
+            android:id="@+id/rest_divider1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:src="@mipmap/home_divider"
+            android:scaleType="fitXY"
+            android:layout_below="@+id/restaurantSummary" />
+        <RelativeLayout
+            android:id="@+id/reasonLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:layout_below="@+id/rest_divider1">
+            <TextView
+                android:textSize="14dp"
+                android:textColor="@color/fontColor"
+                android:id="@+id/tv1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
+                android:text="推荐理由"
+                android:drawableLeft="@mipmap/home_orange_di"
+                android:drawablePadding="8dp" />
+            <TextView
+                android:textSize="14dp"
+                android:textColor="@color/blackFont"
+                android:ellipsize="end"
+                android:id="@+id/reasonTv"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginRight="17dp"
+                android:text="" android:maxLines="4"
+                android:layout_below="@+id/tv1"
+                android:lineSpacingExtra="13dp" />
+            <View
+                android:id="@+id/blankView"
+                android:layout_width="fill_parent"
+                android:layout_height="13dp"
+                android:layout_below="@+id/reasonTv" />
+            <View
+                android:id="@+id/divider2"
+                android:background="@color/divider"
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="17dp"
+                android:layout_marginRight="17dp"
+                android:layout_below="@+id/blankView" />
+            <RelativeLayout
+                android:id="@+id/rest_more_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="11dp"
+                android:layout_below="@+id/divider2">
+                <TextView
+                    android:textSize="12dp"
+                    android:textColor="@color/fontColor"
+                    android:id="@+id/search_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:text="查看更多"
+                    android:drawableLeft="@mipmap/search_result_icon"
+                    android:drawablePadding="8dp" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="3dp"
+                    android:src="@mipmap/search_right_arrow"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true" />
+            </RelativeLayout>
+        </RelativeLayout>
+        <ImageView
+            android:id="@+id/rest_divider2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:src="@mipmap/home_divider"
+            android:scaleType="fitXY"
+            android:layout_below="@+id/reasonLayout" />
+        <com.product.yuwei.view.localview.CustomListView
+            android:id="@+id/listview"
+            android:layout_below="@+id/rest_divider2"
+            android:divider="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+</ScrollView>

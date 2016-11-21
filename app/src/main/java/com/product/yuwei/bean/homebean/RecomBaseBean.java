@@ -2,6 +2,7 @@ package com.product.yuwei.bean.homebean;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,9 +16,6 @@ public class RecomBaseBean {
     private List<RecomHotBean> list_hot4;
     private List<RecomHotBean> list_hot5;
     private List<RecomPageBean> list_page;
-
-
-
     private String hot1_title;
     private String hot2_title;
     private String hot3_title;
@@ -26,8 +24,47 @@ public class RecomBaseBean {
     private String note_title;
     private String note_subtitle;
     private List<RecomNoteBean> note_list;
-    private List<JSONObject> json_note_author;
+    private List<String> baseHotTitle;
+
+    private List<List<RecomHotBean>> baseHotBean;//用来存放list_hot 的list
+
+    public List<String> getBaseHotTitle() {
+        baseHotTitle=new ArrayList<>();
+        baseHotTitle.add(hot1_title);
+        baseHotTitle.add(hot2_title);
+        baseHotTitle.add(hot3_title);
+        baseHotTitle.add(hot4_title);
+        baseHotTitle.add(hot5_title);
+        return baseHotTitle;
+    }
+
+    public void setBaseHotTitle(List<String> baseHotTitle) {
+
+        this.baseHotTitle = baseHotTitle;
+    }
+
+
     public  RecomBaseBean(){}
+
+
+    public List<List<RecomHotBean>> getBaseHotBean() {
+        baseHotBean=new ArrayList<List<RecomHotBean>>();
+        baseHotBean.add(list_hot1);
+        baseHotBean.add(list_hot2);
+        baseHotBean.add(list_hot3);
+        baseHotBean.add(list_hot4);
+        baseHotBean.add(list_hot5);
+        return baseHotBean;
+    }
+    public void setBaseHotBean(List<List<RecomHotBean>> baseHotBean) {
+        baseHotBean.add(list_hot1);
+        baseHotBean.add(list_hot2);
+        baseHotBean.add(list_hot3);
+        baseHotBean.add(list_hot4);
+        baseHotBean.add(list_hot5);
+        this.baseHotBean = baseHotBean;
+    }
+
 
 
     public List<RecomHotBean> getList_hot1() {
@@ -142,13 +179,7 @@ public class RecomBaseBean {
         this.note_list = note_list;
     }
 
-    public List<JSONObject> getJson_note_author() {
-        return json_note_author;
-    }
 
-    public void setJson_note_author(List<JSONObject> json_note_author) {
-        this.json_note_author = json_note_author;
-    }
 
 
 
