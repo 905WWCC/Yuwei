@@ -1,6 +1,10 @@
 package com.product.yuwei.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.BackgroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,10 +81,6 @@ public class AttentionAdapter extends BaseAdapter {
         String label2 = hotBase.getAtt_label_name2();
         String label3 = hotBase.getAtt_label_name3();
 
-//        Log.e("uname", label1);
-//        Log.e("vname",label2);
-//        Log.e("desc",label3);
-
         Glide
                 .with(context)
                 .load(hotBase.getAtt_header())
@@ -90,15 +90,56 @@ public class AttentionAdapter extends BaseAdapter {
         viewHolder.unameText.setText(uname);
         viewHolder.vnameText.setText(vname);
         viewHolder.descText.setText(desc);
-        viewHolder.labelText.setText(label1 + label2 + label3);
+
+        if (label3 == null) {
+            viewHolder.labelText.setText(backgroundColor(label1) + "  " + backgroundColor(label2));
+        } else {
+            viewHolder.labelText.setText(backgroundColor(label1) + "  " + backgroundColor(label2) + "   " + backgroundColor(label3));
+        }
+
 
         return ret;
     }
-
     private static class ViewHolder{
         public TextView unameText,vnameText,descText,labelText;
         public ImageView image;
     }
 
+    private SpannableStringBuilder backgroundColor(String str){
+        int bstart1 = str.indexOf("图片高手");
+        int bend1 = bstart1+"图片高手".length();
+
+        int bstart2 = str.indexOf("餐厅拔草先锋");
+        int bend2 = bstart2+"餐厅拔草先锋".length();
+
+        int bstart3 = str.indexOf("米其林餐厅爱好者");
+        int bend3 = bstart3+"米其林餐厅爱好者".length();
+
+        int bstart4 = str.indexOf("盘点贴专注者");
+        int bend4 = bstart4+"盘点贴专注者".length();
+
+        int bstart5 = str.indexOf("有故事的童鞋");
+        int bend5 = bstart5+"有故事的童鞋".length();
+
+        SpannableStringBuilder style = new SpannableStringBuilder(str);
+
+        if (str.equals("图片高手")){
+            style.setSpan(new BackgroundColorSpan(Color.GREEN),bstart1,bend1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+        else if (str.equals("餐厅拔草先锋")){
+            style.setSpan(new BackgroundColorSpan(Color.RED),bstart2,bend2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+        else if (str.equals("米其林餐厅爱好者")){
+            style.setSpan(new BackgroundColorSpan(Color.YELLOW),bstart3,bend3, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+        else if (str.equals("盘点贴专注者")){
+            style.setSpan(new BackgroundColorSpan(Color.BLUE),bstart4,bend4, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+        else if (str.equals("有故事的童鞋")){
+            style.setSpan(new BackgroundColorSpan(Color.GRAY),bstart5,bend5, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+
+        return style;
+    }
 
 }

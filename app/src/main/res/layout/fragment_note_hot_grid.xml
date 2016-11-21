@@ -9,7 +9,7 @@
         android:layout_height="50dp"
         android:orientation="horizontal"
         >
-        <ImageView
+        <com.product.yuwei.tool.GradientImageView
             android:id="@+id/hot_author"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -34,12 +34,39 @@
         android:paddingRight="10dp"
         android:paddingLeft="10dp"
         />
-    <ImageView
-        android:id="@+id/hot_image"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="350dp"
-        android:padding="0dp"
-        />
+        >
+        <ImageView
+            android:id="@+id/hot_image"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            />
+        <TextView
+            android:id="@+id/hot_image_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:ellipsize="end"
+            android:textSize="25sp"
+            android:textColor="#fff"
+            android:layout_marginBottom="60dp"
+            android:paddingRight="30dp"
+            android:paddingLeft="30dp"
+            android:layout_gravity="center_horizontal|bottom"
+            />
+        <TextView
+            android:id="@+id/hot_image_numText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            android:layout_marginBottom="45dp"
+            android:layout_gravity="center_horizontal|bottom"
+            />
+    </FrameLayout>
+
     <TextView
         android:id="@+id/hot_num"
         android:layout_width="wrap_content"

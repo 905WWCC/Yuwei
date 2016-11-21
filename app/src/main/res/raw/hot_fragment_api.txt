@@ -8,7 +8,7 @@
                 "isFavour": "0",
                 "isCollect": "0",
                 "cover": "http://cdn.youyuwei.com/o_1avssq08j1mvjo0vl71gdd17i2f.jpg?imageView2/1/w/1080/h/1080",
-                "city": "香港",
+                "city": "香港" ,
                 "rest": "",
                 "time": 1477287025,
                 "vote": 37,

@@ -66,6 +66,8 @@ public class HotGridAdapter extends BaseAdapter {
             viewHolder.nameText = (TextView) ret.findViewById(R.id.hot_author_name);
             viewHolder.authorImage = (ImageView) ret.findViewById(R.id.hot_author);
             viewHolder.numText = (TextView) ret.findViewById(R.id.hot_num);
+            viewHolder.imageText = (TextView) ret.findViewById(R.id.hot_image_text);
+            viewHolder.imageNumText = (TextView) ret.findViewById(R.id.hot_image_numText);
             ret.setTag(viewHolder);
         }
 
@@ -76,6 +78,7 @@ public class HotGridAdapter extends BaseAdapter {
         String text = hotBase.getText();
         String author = hotBase.getAuthor_uname();
         String level = hotBase.getLevel();
+        String name = hotBase.getName();
         int vote = hotBase.getVote();
         int fav = hotBase.getFav();
         int readnum = hotBase.getReadnum();
@@ -100,6 +103,9 @@ public class HotGridAdapter extends BaseAdapter {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         String date = format.format(new java.util.Date());
 
+
+        viewHolder.imageText.setText(name);
+        viewHolder.imageNumText.setText(imgnum + "");
         viewHolder.nameText.setText(author + " \t\t LV" + level + " \t\t\t\t " + date);
         viewHolder.textView.setText(text);
         viewHolder.numText.setText(fav + "赞\t" + vote + "评论\t" + readnum+ "阅读");
@@ -108,7 +114,7 @@ public class HotGridAdapter extends BaseAdapter {
     }
 
     private static class ViewHolder{
-        public TextView textView,nameText,numText;
+        public TextView textView,nameText,numText,imageText,imageNumText;
         public ImageView imageView,authorImage;
     }
 

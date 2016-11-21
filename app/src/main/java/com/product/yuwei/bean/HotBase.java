@@ -1,7 +1,5 @@
 package com.product.yuwei.bean;
 
-import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -147,12 +145,11 @@ public class HotBase {
             if (!jsonObject.isNull("desc")) {
                 this.att_desc = jsonObject.getString("desc");
             }
+            if (!jsonObject.isNull("vname")){
+                this.att_vname = jsonObject.getString("vname");
+            }
             if (!jsonObject.isNull("label")) {
                 JSONArray label = jsonObject.getJSONArray("label");
-                Log.e("label",label+"");
-//                if (!jsonObject.isNull("name")){
-//
-//                }
                 this.att_label_name1 = label.getJSONObject(0).getString("name");
                 this.att_label_name2 = label.getJSONObject(1).getString("name");
                 this.att_label_name3 = label.getJSONObject(2).getString("name");
