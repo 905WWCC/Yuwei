@@ -64,7 +64,7 @@ public class RecommendFragment extends Fragment {
     private List<View> pageViewlist;
     private ImageView pageView;
     private ViewPager sViewPager;
-    private String url="http://www.youyuwei.com/api/recommend?oauth_version=1.0&oauth_nonce=2d2ad071-3446-42a1-b837-a6a67fd99d7d&oauth_consumer_key=5&device_type=android&screen_width=720&device_id=14%3Ab9%3A68%3A7b%3Acd%3Aa5&ver=6&ywsdk_ver=20140507&sys_ver=4.4.2&ver_code=37&channel_id=yingyongbao&oauth_signature=jJRJ5%2FLbvIdwtYXmaVvr%2F%2BJ48xQ%3D&x_auth_mode=client_auth&device_token=AuvKGi2ypE9kxeNnDxvtiRQWfAqOe-l-VwdpLaqeDvJL&oauth_signature_method=HMAC-SHA1&oauth_token=0_9837387abc33331ab&open_udid=14%3Ab9%3A68%3A7b%3Acd%3Aa5&app_ver=3.4&app_code=com.yuwei.android&oauth_timestamp=1479190680&screen_height=1280";
+    private String url="http://www.youyuwei.com/api/recommend?oauth_version=1.0&oauth_nonce=81f948ae-eb53-447e-8aed-1025e8855f29&oauth_consumer_key=5&device_type=android&screen_width=720&device_id=14%3Ab9%3A68%3A7b%3Acd%3Aa5&ver=6&ywsdk_ver=20140507&sys_ver=4.4.2&ver_code=37&channel_id=yingyongbao&oauth_signature=a2qFC%2BnuTU%2BIKz7JRo5RzOW%2FTr8%3D&x_auth_mode=client_auth&device_token=AuvKGi2ypE9kxeNnDxvtiRQWfAqOe-l-VwdpLaqeDvJL&oauth_signature_method=HMAC-SHA1&oauth_token=0_9837387abc33331ab&open_udid=14%3Ab9%3A68%3A7b%3Acd%3Aa5&app_ver=3.4&app_code=com.yuwei.android&oauth_timestamp=1479543503&screen_height=1280";
 
     @Nullable
     @Override
