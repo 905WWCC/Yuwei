@@ -12,7 +12,7 @@ public class NetApi {
     public static final String BUY_COMPONENT_RESULT="short_componentList";
 
 
-
+    // fix bug
 
 
 
