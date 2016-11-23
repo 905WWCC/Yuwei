@@ -37,11 +37,11 @@ public class YuweiApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        SDKInitializer.initialize(getApplicationContext());
+        //SDKInitializer.initialize(getApplicationContext());
         //初始化
-        x.Ext.init(this);
+        //x.Ext.init(this);
         //设置是否输出debug
-        x.Ext.setDebug(BuildConfig.DEBUG);
+        //x.Ext.setDebug(BuildConfig.DEBUG);
 
 
         try {
