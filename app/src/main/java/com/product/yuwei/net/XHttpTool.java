@@ -15,6 +15,7 @@ public final class XHttpTool {
 
     }
 
+    //////////////////////////////
     //////////////////////////////  GET 请求 ////////////////////////
     public static void getDataByGet(RequestParams params , final RequestListener requestListener){
 
